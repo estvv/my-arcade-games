@@ -1,0 +1,55 @@
+name: my_github_actions
+
+on:
+  push:
+    branches-ignore:
+      - ga-ignore-;
+  pull_request:
+    branches-ignore:
+      - ga-ignore-;
+
+env:
+  EXECUTABLES: "my_snake"
+
+jobs:
+  check_program_compilation:
+    name: check_program_compilation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout - Compilation
+        uses: actions/checkout@v4
+      - name: Check if Makefile exist.
+        run: |
+            if [ ! -f "Makefile" ]; then
+              exit 1
+            fi
+      - name: Compilation (make).
+        run: make
+      - name: Clean temporaries files (make clean).
+        run: make clean
+      - name: Check if bin exist and execute it.
+        run: |
+            IFS="," read -r -a BINARY <<< "$EXECUTABLES"
+            for file in ${BINARY[@]}; do
+              if [ ! -x "$file" ]; then
+                exit 1
+              fi
+            done
+
+  run_tests:
+    needs: check_program_compilation
+    name: run_tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout - Tests running.
+        uses: actions/checkout@v4
+      - name: Unit tests (make tests_run).
+        run: |
+            if (cat "Makefile" | grep "tests_run"); then
+              make tests_run
+            fi
+      - name: Clean Unit tests (make tests_clean).
+        run: |
+            if (cat "Makefile" | grep "tests_clean"); then
+              make tests_clean
+            fi

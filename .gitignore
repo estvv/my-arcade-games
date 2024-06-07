@@ -1,0 +1,4 @@
+.vscode
+my_snake
+*.o
+vgcore.*

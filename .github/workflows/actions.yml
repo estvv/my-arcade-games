@@ -24,7 +24,7 @@ jobs:
               exit 1
             fi
       - name: Compilation (make).
-        run: make
+        run: make re
       - name: Clean temporaries files (make clean).
         run: make clean
       - name: Check if bin exist and execute it.

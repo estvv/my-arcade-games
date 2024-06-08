@@ -18,6 +18,7 @@ class Node {
         Node(sf::RectangleShape rect);
 
         sf::RectangleShape rect;
+        enum dir moove;
         Node *next;
     private:
 };
@@ -36,9 +37,6 @@ class Snake {
         Snake(void);
 
         linkedSnake *body;
-        enum dir moove;
-        unsigned int x;
-        unsigned int y;
     private:
 };
 

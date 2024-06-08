@@ -5,16 +5,14 @@ Node::Node(sf::RectangleShape rect) : rect(rect), next(nullptr) {}
 linkedSnake::linkedSnake(sf::RectangleShape rect) : head(nullptr)
 {
     head = new Node(rect);
-    head->rect.setSize(sf::Vector2f(20, 20));
-    head->rect.setOutlineColor(sf::Color::Cyan);
     head->rect.setFillColor(sf::Color::Cyan);
-    head->rect.setOutlineThickness(2);
-    head->rect.setPosition(390, 390);
+    head->rect.setPosition(400, 400);
+    head->moove = SOUTH;
 }
 
-Snake::Snake(void) : body(nullptr), moove(SOUTH)
+Snake::Snake(void) : body(nullptr)
 {
-    sf::RectangleShape rect(sf::Vector2f(200, 200));
+    sf::RectangleShape rect(sf::Vector2f(20, 20));
 
     body = new linkedSnake(rect);
 }
@@ -24,8 +22,5 @@ void linkedSnake::insertRect(sf::RectangleShape rect, sf::Color color) {
 
     while (tmp->next) tmp = tmp->next;
     tmp->next = new Node(rect);
-    tmp->next->rect.setSize(sf::Vector2f(100, 50));
-    tmp->next->rect.setOutlineColor(color);
-    tmp->next->rect.setOutlineThickness(5);
-    tmp->next->rect.setPosition(10, 20);
+    tmp->next->rect.setPosition(20, 20);
 }

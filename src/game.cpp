@@ -21,6 +21,7 @@ Game::Game(void) :
     round_txt.setFont(pixel_font);
 }
 
+// Game loop
 void Game::run()
 {
     clock.restart();
@@ -41,17 +42,18 @@ void Game::manageEvent()
                 window.close();
             // Check user input
             if (event.key.code == sf::Keyboard::Z or event.key.code == sf::Keyboard::Up)
-                snake.body->head->moove = NORTH;
+                snake.head->moove = NORTH;
             if (event.key.code == sf::Keyboard::S or event.key.code == sf::Keyboard::Down)
-                snake.body->head->moove = SOUTH;
+                snake.head->moove = SOUTH;
             if (event.key.code == sf::Keyboard::Q or event.key.code == sf::Keyboard::Left)
-                snake.body->head->moove = WEST;
+                snake.head->moove = WEST;
             if (event.key.code == sf::Keyboard::D or event.key.code == sf::Keyboard::Right)
-                snake.body->head->moove = EAST;
+                snake.head->moove = EAST;
         }
     }
 }
 
+// Game update
 void Game::update()
 {
     mooveSnake();
@@ -59,41 +61,59 @@ void Game::update()
     appelEating();
 }
 
+// Mooving snake with Snake logic
 void Game::mooveSnake(void)
 {
-    sf::Vector2f rect_pos(snake.body->head->rect.getPosition());
+    Node *node(snake.head->next);
+    sf::Vector2f rect_pos(snake.head->rect.getPosition());
+    sf::Vector2f body_pos;
     sf::Time time;
 
     // Clock to moove the snake each 0.9 second
     time = clock.getElapsedTime();
     if (time.asSeconds() < 0.1)
         return;
-    if (snake.body->head->moove == SOUTH)
-        rect_pos.y += 20;
-    if (snake.body->head->moove == NORTH)
-        rect_pos.y -= 20;
-    if (snake.body->head->moove == EAST)
-        rect_pos.x += 20;
-    if (snake.body->head->moove == WEST)
-        rect_pos.x -= 20;
-    snake.body->head->rect.setPosition(rect_pos);
+    if (snake.head->next) {
+        body_pos = snake.head->next->rect.getPosition();
+        if (snake.head->moove == SOUTH and sf::Vector2f(rect_pos.x, rect_pos.y + 20) == body_pos)
+            snake.head->moove = NORTH;
+        if (snake.head->moove == NORTH and sf::Vector2f(rect_pos.x, rect_pos.y - 20) == body_pos)
+            snake.head->moove = SOUTH;
+        if (snake.head->moove == EAST and sf::Vector2f(rect_pos.x + 20, rect_pos.y) == body_pos)
+            snake.head->moove = WEST;
+        if (snake.head->moove == WEST and sf::Vector2f(rect_pos.x - 20, rect_pos.y) == body_pos)
+            snake.head->moove = EAST;
+    }
+    snake.updateBody();
+    if (snake.head->moove == SOUTH) rect_pos.y += 20;
+    if (snake.head->moove == NORTH) rect_pos.y -= 20;
+    if (snake.head->moove == EAST) rect_pos.x += 20;
+    if (snake.head->moove == WEST) rect_pos.x -= 20;
+    snake.head->rect.setPosition(rect_pos);
     clock.restart();
 }
 
+// Check if snake's head hit something
 void Game::endOfGame(void)
 {
-    sf::Vector2f rect_pos(snake.body->head->rect.getPosition());
-    sf::FloatRect arena_pos(arena.getLocalBounds());
+    Node *node(snake.head->next);
+    sf::Vector2f head_pos(snake.head->rect.getPosition());
 
     // If the snake's head is out of the arena
-    if (rect_pos.x < 0 || rect_pos.x > 800 || rect_pos.y < 40 || rect_pos.y > 800)
+    if (head_pos.x < 0 || head_pos.x > 800 || head_pos.y < 40 || head_pos.y > 800)
         window.close();
+    while (node) {
+        if (node->rect.getPosition() == head_pos)
+            window.close();
+        node = node->next;
+    }
 }
 
+// Snake's head is on an apple
 void Game::appelEating(void)
 {
-    Node *node(snake.body->head);
-    sf::Vector2f snake_pos(snake.body->head->rect.getPosition());
+    Node *node(snake.head);
+    sf::Vector2f snake_pos(snake.head->rect.getPosition());
     sf::Vector2f apple_pos(apple.apple.getPosition());
 
     if (snake_pos == apple_pos) {
@@ -104,19 +124,21 @@ void Game::appelEating(void)
             if (snake_pos == apple_pos) {
                 srand(time(NULL));
                 apple.apple.setPosition(20 * (rand() % 40), 20 * (rand() % 38) + 40);
-                node = snake.body->head;
+                node = snake.head;
             } else {
                 node = node->next;
             }
         }
         score = score + 1 + round;
         score_txt.setString("SCORE : " + std::to_string(score));
+        snake.addBody();
     }
 }
 
+// Display game
 void Game::winDisplay(void)
 {
-    Node *node(snake.body->head);
+    Node *node(snake.head);
 
     window.clear(sf::Color::Black);
     window.draw(arena);

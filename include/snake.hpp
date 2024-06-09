@@ -15,28 +15,23 @@ enum dir {
 
 class Node {
     public:
-        Node(sf::RectangleShape rect);
+        Node(Node *prev, sf::Vector2f pos, sf::Color color);
 
         sf::RectangleShape rect;
         enum dir moove;
         Node *next;
-    private:
-};
-
-class linkedSnake {
-    public:
-        linkedSnake(sf::RectangleShape rect);
-        void insertRect(sf::RectangleShape rect, sf::Color color);
-
-        Node *head;
+        Node *prev;
     private:
 };
 
 class Snake {
     public:
         Snake(void);
+        void InsertNode(sf::Vector2f pos, sf::Color color);
+        void addBody(void);
+        void updateBody(void);
 
-        linkedSnake *body;
+        Node *head;
     private:
 };
 

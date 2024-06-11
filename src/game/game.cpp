@@ -1,4 +1,5 @@
 #include "game.hpp"
+#include <iostream>
 
 Game::Game(sf::RenderWindow &window) :
     window(window),
@@ -10,13 +11,15 @@ Game::Game(sf::RenderWindow &window) :
     round(0)
 {
     arena.setOutlineThickness(2);
-    arena.setOutlineColor(sf::Color::Green);
+    arena.setOutlineColor(sf::Color(0, 240, 0));
     arena.setPosition(sf::Vector2f(2, 40));
     arena.setFillColor(sf::Color::Black);
     score_txt.setPosition(sf::Vector2f(0, 0));
     round_txt.setPosition(sf::Vector2f(600, 0));
-    if (not font.loadFromFile("./assets/pixel.ttf"))
+    if (not font.loadFromFile("./assets/font/pixel.ttf")) {
+        std::cerr << "Problem with pixel.ttf." << std::endl;
         exit(84);
+    }
     score_txt.setFont(font);
     round_txt.setFont(font);
 }
@@ -60,7 +63,7 @@ void Game::mooveSnake(void)
     sf::Vector2f body_pos;
     sf::Time time;
 
-    // Clock to moove the snake each 0.9 second
+    // Clock to moove the snake each 0.90 second
     time = clock.getElapsedTime();
     if (time.asSeconds() < 0.1)
         return;
@@ -131,7 +134,6 @@ void Game::displayGame()
 {
     Node *node(snake.head);
 
-    window.clear(sf::Color::Black);
     window.draw(arena);
     window.draw(score_txt);
     window.draw(round_txt);
@@ -140,5 +142,4 @@ void Game::displayGame()
         window.draw(node->rect);
         node = node->next;
     }
-    window.display();
 }

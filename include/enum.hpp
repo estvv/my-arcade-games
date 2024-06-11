@@ -3,12 +3,20 @@
 
 enum screens {
     mainMenu,
-    playScreen,
-    settingsMenu,
+    settingsFirstMenu,
+    settingsSecondMenu,
     leaderboardMenu,
     helpMenu,
     pauseMenu,
-    deadMenu
+    deadMenu,
+    playScreen
+};
+
+enum buttonState {
+    isNone,
+    mouseHover,
+    mouseClicked,
+    isDisabled
 };
 
 #endif /* !ENUM_HPP_ */

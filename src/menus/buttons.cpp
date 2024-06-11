@@ -3,6 +3,7 @@
 #include <iostream>
 
 Buttons::Buttons(const std::string &txt, sf::Vector2f size, sf::Vector2f new_pos, buttonFunc func, sf::Font &font) :
+    state(isNone),
     func(func)
 {
     button_rect = sf::RectangleShape(size);
@@ -27,25 +28,24 @@ void Buttons::isHover(sf::RenderWindow &window)
     sf::FloatRect rect_pos;
 
     rect_pos = button_rect.getGlobalBounds();
-    if (rect_pos.contains(mouse_pos.x, mouse_pos.y))
+    if (rect_pos.contains(mouse_pos.x, mouse_pos.y)) {
         button_rect.setFillColor(sf::Color(0, 150, 0, 255));
-    else
+        state = mouseHover;
+    } else {
         button_rect.setFillColor(sf::Color::Black);
+        state = isNone;
+    }
 }
 
-void Buttons::isClicked(sf::RenderWindow &window)
+void Buttons::isClicked(All *all, sf::RenderWindow &window)
 {
-    if (isMouseOnButton(window))
+    if (state == mouseHover) {
         button_rect.setFillColor(sf::Color(0, 100, 0, 255));
-    else
+        state = mouseClicked;
+    } else {
         button_rect.setFillColor(sf::Color::Black);
-}
-
-bool Buttons::isMouseOnButton(sf::RenderWindow &window)
-{
-    sf::Vector2i mouse_pos = sf::Mouse::getPosition(window);
-    sf::FloatRect rect_pos = button_rect.getGlobalBounds();
-    return rect_pos.contains(sf::Vector2f(mouse_pos.x, mouse_pos.y));
+        state = isNone;
+    }
 }
 
 void Buttons::onClick(All *all)
@@ -61,21 +61,36 @@ void Buttons::displayButtons(sf::RenderWindow &window)
 
 void playButtonFunction(All &all)
 {
+    for (Buttons &button : all.menusList.at(all.screen_id).buttonsList)
+        button.state = isNone;
     all.screen_id = playScreen;
 }
 
-void settingsButtonFunction(All &all)
+void goToFirstSettingsMenu(All &all)
 {
-    all.screen_id = settingsMenu;
+    for (Buttons &button : all.menusList.at(all.screen_id).buttonsList)
+        button.state = isNone;
+    all.screen_id = settingsFirstMenu;
+}
+
+void goToSecondSettingsMenu(All &all)
+{
+    for (Buttons &button : all.menusList.at(all.screen_id).buttonsList)
+        button.state = isNone;
+    all.screen_id = settingsSecondMenu;
 }
 
 void leaderButtonFunction(All &all)
 {
+    for (Buttons &button : all.menusList.at(all.screen_id).buttonsList)
+        button.state = isNone;
     all.screen_id = leaderboardMenu;
 }
 
 void helpButtonFunction(All &all)
 {
+    for (Buttons &button : all.menusList.at(all.screen_id).buttonsList)
+        button.state = isNone;
     all.screen_id = helpMenu;
 }
 

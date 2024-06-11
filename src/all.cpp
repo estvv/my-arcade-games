@@ -11,11 +11,16 @@ All::All(void) :
     game(window),
     window(sf::VideoMode(800, 800), "my-snake", sf::Style::Default)
 {
-    if (!font.loadFromFile("assets/pixel.ttf"))
+    if (!font.loadFromFile("assets/font/pixel.ttf")) {
+        std::cerr << "Problem with pixel.ttf." << std::endl;
         exit(84);
+    }
     window.setPosition(sf::Vector2i(560, 100));
     window.setSize(sf::Vector2u(800, 800));
-    logo_texture.loadFromFile("./assets/snake.png");
+    if (not logo_texture.loadFromFile("./assets/image/snake.png")) {
+        std::cerr << "Problem with snake.png." << std::endl;
+        exit(84);
+    }
     logo_sprite.setTexture(logo_texture);
     logo_sprite.setOrigin(sf::Vector2f(0, 0));
     logo_sprite.setPosition(sf::Vector2f(210, -50));
@@ -29,6 +34,7 @@ void All::initMenus(void)
     menusList.push_back(Menus(window, this));
     menusList.push_back(Menus(window, this));
     menusList.push_back(Menus(window, this));
+    menusList.push_back(Menus(window, this));
     initMain();
     initSettings();
 }
@@ -36,8 +42,8 @@ void All::initMenus(void)
 void All::initMain(void)
 {
     menusList.at(0).buttonsList.push_back(Buttons("PLAY", sf::Vector2f(400, 50), sf::Vector2f(200, 300), playButtonFunction, font));
-    menusList.at(0).buttonsList.push_back(Buttons("SETTINGS", sf::Vector2f(400, 50), sf::Vector2f(200, 400), settingsButtonFunction, font));
-    menusList.at(0).buttonsList.push_back(Buttons("LEADER", sf::Vector2f(400, 50), sf::Vector2f(200, 500), leaderButtonFunction, font));
+    menusList.at(0).buttonsList.push_back(Buttons("SETTINGS", sf::Vector2f(400, 50), sf::Vector2f(200, 400), goToFirstSettingsMenu, font));
+    menusList.at(0).buttonsList.push_back(Buttons("LEADERBOARD", sf::Vector2f(400, 50), sf::Vector2f(200, 500), leaderButtonFunction, font));
     menusList.at(0).buttonsList.push_back(Buttons("HELP", sf::Vector2f(400, 50), sf::Vector2f(200, 600), helpButtonFunction, font));
     menusList.at(0).buttonsList.push_back(Buttons("EXIT", sf::Vector2f(400, 50), sf::Vector2f(200, 700), exitButtonFunction, font));
 }
@@ -62,35 +68,28 @@ void All::initSettings(void)
     menusList.at(1).buttonsList.push_back(Buttons("", sf::Vector2f(100, 50), sf::Vector2f(500, 650), none, font));
     menusList.at(1).buttonsList.push_back(Buttons("", sf::Vector2f(100, 50), sf::Vector2f(275, 720), none, font));
     menusList.at(1).buttonsList.push_back(Buttons("", sf::Vector2f(100, 50), sf::Vector2f(425, 720), none, font));
+    menusList.at(1).buttonsList.push_back(Buttons("NEXT", sf::Vector2f(100, 50), sf::Vector2f(690, 740), goToSecondSettingsMenu, font));
+    menusList.at(2).buttonsList.push_back(Buttons("PREV", sf::Vector2f(100, 50), sf::Vector2f(10, 740), goToFirstSettingsMenu, font));
+    menusList.at(2).buttonsList.push_back(Buttons("Z", sf::Vector2f(50, 50), sf::Vector2f(50, 50), none, font));
+    menusList.at(2).buttonsList.push_back(Buttons("Q", sf::Vector2f(50, 50), sf::Vector2f(50, 110), none, font));
+    menusList.at(2).buttonsList.push_back(Buttons("S", sf::Vector2f(50, 50), sf::Vector2f(50, 170), none, font));
+    menusList.at(2).buttonsList.push_back(Buttons("D", sf::Vector2f(50, 50), sf::Vector2f(50, 230), none, font));
+    menusList.at(2).buttonsList.push_back(Buttons("SPACE", sf::Vector2f(170, 50), sf::Vector2f(50, 290), none, font));
 }
 
 void All::manageWindow(void)
 {
+    window.clear(sf::Color::Black);
     if (screen_id == playScreen) {
         game.manageGameEvent(event, screen_id);
         game.update();
         game.displayGame();
-    }
-    if (screen_id == mainMenu) {
-        menusList.at(0).manageMenusEvent(this, event);
-        menusList.at(0).updateMenus();
-        menusList.at(0).displayMenus();
-        window.draw(logo_sprite);
-    }
-    if (screen_id == settingsMenu) {
-        menusList.at(1).manageMenusEvent(this, event);
-        menusList.at(1).updateMenus();
-        menusList.at(1).displayMenus();
-    }
-    if (screen_id == leaderboardMenu) {
-        menusList.at(2).manageMenusEvent(this, event);
-        menusList.at(2).updateMenus();
-        menusList.at(2).displayMenus();
-    }
-    if (screen_id == helpMenu) {
-        menusList.at(3).manageMenusEvent(this, event);
-        menusList.at(3).updateMenus();
-        menusList.at(3).displayMenus();
+    } else {
+        menusList.at(screen_id).updateMenus();
+        menusList.at(screen_id).displayMenus();
+        menusList.at(screen_id).manageMenusEvent(this, event);
+        if (screen_id == mainMenu)
+            window.draw(logo_sprite);
     }
     window.display();
 }

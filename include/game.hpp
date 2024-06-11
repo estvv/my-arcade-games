@@ -2,6 +2,7 @@
     #define EXAMPLE_HPP
     #include "snake.hpp"
     #include "apple.hpp"
+    #include "enum.hpp"
     #include <iostream>
     #include <SFML/Graphics.hpp>
     #include <SFML/Window.hpp>
@@ -10,10 +11,9 @@
 
 class Game {
     public:
-        Game(void);
-        void run();
-        void winDisplay();
-        void manageEvent();
+        Game(sf::RenderWindow &window);
+        void displayGame();
+        void manageGameEvent(sf::Event event, enum screens &screen_id);
         void update();
         void endOfGame();
         void appelEating();
@@ -21,11 +21,10 @@ class Game {
 
         Snake snake;
         Apple apple;
-        sf::RenderWindow window;
-        sf::Event event;
+        sf::RenderWindow &window;
         sf::Clock clock;
         sf::RectangleShape arena;
-        sf::Font pixel_font;
+        sf::Font font;
         sf::Text score_txt;
         sf::Text round_txt;
         unsigned int score;

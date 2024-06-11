@@ -1,12 +1,11 @@
-#include "game.hpp"
-#include "snake.hpp"
+#include "all.hpp"
 
 int main(int ac, char **av)
 {
-    Game game;
+    All all;
 
     if (ac != 1)
         return 84;
-    game.run();
+    all.loop();
     return 0;
 }

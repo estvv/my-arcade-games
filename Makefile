@@ -13,9 +13,11 @@ CXXFLAGS	=	-I$(INCLUDE) \
 				-std=c++17 \
 				-lsfml-graphics \
 				-lsfml-window \
-				-lsfml-system
+				-lsfml-system \
+				-g3
 
-SRC	=	$(wildcard src/*.cpp)
+SRC	=	$(wildcard src/*.cpp) \
+		$(wildcard src/*/*.cpp)
 
 OBJ	=	$(SRC:.cpp=.o)
 

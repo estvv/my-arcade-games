@@ -1,46 +1,37 @@
 #include "game.hpp"
 
-Game::Game(void) :
-    window(sf::VideoMode(800, 800), "my-snake", sf::Style::Default),
+Game::Game(sf::RenderWindow &window) :
+    window(window),
     arena(sf::Vector2f(796, 758)),
-    pixel_font(),
-    score_txt("SCORE : 0", pixel_font, 30),
-    round_txt("ROUND : 1", pixel_font, 30),
+    font(),
+    score_txt("SCORE : 0", font, 30),
+    round_txt("ROUND : 1", font, 30),
     score(0),
     round(0)
 {
-    window.setPosition(sf::Vector2i(560, 100));
     arena.setOutlineThickness(2);
     arena.setOutlineColor(sf::Color::Green);
     arena.setPosition(sf::Vector2f(2, 40));
     arena.setFillColor(sf::Color::Black);
-    pixel_font.loadFromFile("assets/pixel.ttf");
-    score_txt.setFont(pixel_font);
     score_txt.setPosition(sf::Vector2f(0, 0));
     round_txt.setPosition(sf::Vector2f(600, 0));
-    round_txt.setFont(pixel_font);
+    if (not font.loadFromFile("./assets/pixel.ttf"))
+        exit(84);
+    score_txt.setFont(font);
+    round_txt.setFont(font);
 }
 
-// Game loop
-void Game::run()
-{
-    clock.restart();
-    while (window.isOpen()) {
-        manageEvent();
-        update();
-        winDisplay();
-    }
-}
-
-void Game::manageEvent()
+void Game::manageGameEvent(sf::Event event, enum screens &screen_id)
 {
     while (window.pollEvent(event)) {
         if (event.type == sf::Event::Closed)
             window.close();
         if (event.type == sf::Event::KeyPressed and event.type != sf::Event::KeyReleased) {
-            if (event.key.code == sf::Keyboard::Escape)
-                window.close();
             // Check user input
+            if (event.key.code == sf::Keyboard::Escape) {
+                screen_id = mainMenu;
+                snake.head->rect.setPosition(sf::Vector2f(400, 400));
+            }
             if (event.key.code == sf::Keyboard::Z or event.key.code == sf::Keyboard::Up)
                 snake.head->moove = NORTH;
             if (event.key.code == sf::Keyboard::S or event.key.code == sf::Keyboard::Down)
@@ -94,7 +85,7 @@ void Game::mooveSnake(void)
 }
 
 // Check if snake's head hit something
-void Game::endOfGame(void)
+void Game::endOfGame()
 {
     Node *node(snake.head->next);
     sf::Vector2f head_pos(snake.head->rect.getPosition());
@@ -136,7 +127,7 @@ void Game::appelEating(void)
 }
 
 // Display game
-void Game::winDisplay(void)
+void Game::displayGame()
 {
     Node *node(snake.head);
 

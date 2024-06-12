@@ -18,6 +18,7 @@ class All {
         void initMenus(void);
         void initMain(void);
         void initSettings(void);
+        void initLeaderboard(void);
 
         Game game;
         std::vector<Menus> menusList;

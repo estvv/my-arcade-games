@@ -3,6 +3,7 @@
     #include "snake.hpp"
     #include "apple.hpp"
     #include "enum.hpp"
+    #include "colors.hpp"
     #include <iostream>
     #include <SFML/Graphics.hpp>
     #include <SFML/Window.hpp>
@@ -11,13 +12,13 @@
 
 class Game {
     public:
-        Game(sf::RenderWindow &window);
-        void displayGame();
+        Game(Colors colors, sf::RenderWindow &window);
+        void displayGame(void);
         void manageGameEvent(sf::Event event, enum screens &screen_id);
-        void update();
-        void endOfGame();
-        void appelEating();
-        void mooveSnake();
+        void update(sf::Color snakeBodyColor);
+        void endOfGame(void);
+        void appelEating(sf::Color snakeBodyColor);
+        void mooveSnake(void);
 
         Snake snake;
         Apple apple;

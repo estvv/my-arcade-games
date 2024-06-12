@@ -1,4 +1,5 @@
 #include "snake.hpp"
+#include "colors.hpp"
 
 Node::Node(Node *prev, sf::Vector2f pos,  sf::Color color) :
     rect(sf::RectangleShape(sf::Vector2f(20, 20))),
@@ -11,24 +12,24 @@ Node::Node(Node *prev, sf::Vector2f pos,  sf::Color color) :
 }
 
 // Init head of the snake
-Snake::Snake(void) : head(nullptr)
+Snake::Snake(sf::Color snakeHeadColor) : head(nullptr)
 {
-    head = new Node(nullptr, sf::Vector2f(400, 400), sf::Color(0, 150, 0));
+    head = new Node(nullptr, sf::Vector2f(400, 400), snakeHeadColor);
 }
 
 // Insert a node in the linked list
-void Snake::InsertNode(sf::Vector2f pos, sf::Color color)
+void Snake::InsertNode(sf::Vector2f pos, sf::Color snakeBodyColor)
 {
     Node *curr = head;
 
     while (curr->next)
         curr = curr->next;
-    curr->next = new Node(curr, pos, color);
+    curr->next = new Node(curr, pos, snakeBodyColor);
     curr->next->moove = curr->moove;
 }
 
 // Add one square body of the snake
-void Snake::addBody(void)
+void Snake::addBody(sf::Color snakeBodyColor)
 {
     Node *curr(head->next);
     sf::Vector2f new_coords;
@@ -39,7 +40,7 @@ void Snake::addBody(void)
         if (head->moove == NORTH) new_coords.y += 20;
         if (head->moove == EAST) new_coords.x -= 20;
         if (head->moove == WEST) new_coords.x += 20;
-        InsertNode(new_coords, sf::Color(0, 200, 0));
+        InsertNode(new_coords, snakeBodyColor);
     } else {
         while (curr->next) curr = curr->next;
         new_coords = curr->prev->rect.getPosition();
@@ -47,7 +48,7 @@ void Snake::addBody(void)
         if (curr->prev->moove == NORTH) new_coords.y += 20;
         if (curr->prev->moove == EAST) new_coords.x -= 20;
         if (curr->prev->moove == WEST) new_coords.x += 20;
-        InsertNode(new_coords, sf::Color(0, 200, 0));
+        InsertNode(new_coords, snakeBodyColor);
     }
 }
 

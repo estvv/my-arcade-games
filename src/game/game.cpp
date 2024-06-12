@@ -1,19 +1,22 @@
 #include "game.hpp"
+#include "colors.hpp"
 #include <iostream>
 
-Game::Game(sf::RenderWindow &window) :
+Game::Game(Colors colors, sf::RenderWindow &window) :
     window(window),
     arena(sf::Vector2f(796, 758)),
     font(),
     score_txt("SCORE : 0", font, 30),
     round_txt("ROUND : 1", font, 30),
     score(0),
-    round(0)
+    round(0),
+    snake(colors.snakeHead),
+    apple(colors.apple)
 {
     arena.setOutlineThickness(2);
     arena.setOutlineColor(sf::Color(0, 240, 0));
     arena.setPosition(sf::Vector2f(2, 40));
-    arena.setFillColor(sf::Color::Black);
+    arena.setFillColor(colors.mainColor);
     score_txt.setPosition(sf::Vector2f(0, 0));
     round_txt.setPosition(sf::Vector2f(600, 0));
     if (not font.loadFromFile("./assets/font/pixel.ttf")) {
@@ -48,11 +51,11 @@ void Game::manageGameEvent(sf::Event event, enum screens &screen_id)
 }
 
 // Game update
-void Game::update()
+void Game::update(sf::Color snakeBodyColor)
 {
     mooveSnake();
     endOfGame();
-    appelEating();
+    appelEating(snakeBodyColor);
 }
 
 // Mooving snake with Snake logic
@@ -104,7 +107,7 @@ void Game::endOfGame()
 }
 
 // Snake's head is on an apple
-void Game::appelEating(void)
+void Game::appelEating(sf::Color snakeBodyColor)
 {
     Node *node(snake.head);
     sf::Vector2f snake_pos(snake.head->rect.getPosition());
@@ -125,7 +128,7 @@ void Game::appelEating(void)
         }
         score = score + 1 + round;
         score_txt.setString("SCORE : " + std::to_string(score));
-        snake.addBody();
+        snake.addBody(snakeBodyColor);
     }
 }
 

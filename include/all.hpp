@@ -3,6 +3,7 @@
     #include "game.hpp"
     #include "menus.hpp"
     #include "enum.hpp"
+    #include "colors.hpp"
     #include <vector>
     #include <string>
     #include <SFML/Graphics.hpp>
@@ -15,13 +16,11 @@ class All {
         All(void);
         void loop(void);
         void manageWindow(void);
-        void initMenus(void);
-        void initMain(void);
-        void initSettings(void);
-        void initLeaderboard(void);
+        void updateThemeColors(void);
 
+        Colors colors;
         Game game;
-        std::vector<Menus> menusList;
+        Menus menus;
         sf::RenderWindow window;
         sf::Event event;
         sf::Font font;

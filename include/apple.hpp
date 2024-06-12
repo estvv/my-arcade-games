@@ -7,7 +7,7 @@
 
 class Apple {
     public:
-        Apple(void);
+        Apple(sf::Color appleColor);
 
         sf::RectangleShape apple;
     private:

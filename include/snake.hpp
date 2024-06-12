@@ -26,9 +26,9 @@ class Node {
 
 class Snake {
     public:
-        Snake(void);
-        void InsertNode(sf::Vector2f pos, sf::Color color);
-        void addBody(void);
+        Snake(sf::Color snakeHeadColor);
+        void InsertNode(sf::Vector2f pos, sf::Color snakeBodyColor);
+        void addBody(sf::Color snakeBodyColor);
         void updateBody(void);
 
         Node *head;

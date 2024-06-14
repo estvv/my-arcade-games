@@ -4,9 +4,6 @@
 enum screens screen_id = mainMenu;
 
 All::All(void) :
-    masterVolume(50),
-    soundVolume(50),
-    musicVolume(50),
     screen_id(mainMenu),
     colors(),
     game(colors, window),
@@ -34,9 +31,11 @@ void All::updateThemeColors(void)
     Node *node = game.snake.head->next;
 
     for (Menu &menu : menus.menusList) {
-        for (Buttons &button : menu.buttonsList) {
-            if (button.button_text.getString().getSize() != 0)
-                button.button_rect.setFillColor(colors.mainColor);
+        for (actionButtons &button : menu.actionButtonsList) {
+            button.button_rect.setOutlineColor(colors.button);
+            button.button_text.setFillColor(colors.buttonText);
+        }
+        for (toggledButtons &button : menu.toggledButtonsList) {
             button.button_rect.setOutlineColor(colors.button);
             button.button_text.setFillColor(colors.buttonText);
         }
@@ -57,13 +56,13 @@ void All::manageWindow(void)
 {
     window.clear(colors.mainColor);
     if (screen_id == playScreen) {
-        game.manageGameEvent(event, screen_id);
+        game.manageGameEvent(*this);
         game.update(colors.snakeBody);
         game.displayGame();
     } else {
         menus.menusList.at(screen_id).updateMenus(colors);
         menus.menusList.at(screen_id).displayMenus();
-        menus.menusList.at(screen_id).manageMenusEvent(*this, event);
+        menus.menusList.at(screen_id).manageMenusEvent(*this);
         if (screen_id == mainMenu)
             window.draw(logo_sprite);
     }
@@ -72,7 +71,6 @@ void All::manageWindow(void)
 
 void All::loop(void)
 {
-    while (window.isOpen()) {
+    while (window.isOpen())
         manageWindow();
-    }
 }

@@ -11,11 +11,15 @@
 class Menu {
     public:
         Menu(sf::RenderWindow &window);
-        void manageMenusEvent(All &all, sf::Event event);
+        void manageMenusEvent(All &all);
         void displayMenus(void);
         void updateMenus(Colors colors);
+        void inputKey(All &all);
+        void inputClickPressed(All &all);
+        void inputClickReleased(All &all);
 
-        std::vector<Buttons> buttonsList;
+        std::vector<toggledButtons> toggledButtonsList;
+        std::vector<actionButtons> actionButtonsList;
         sf::RenderWindow &window;
     private:
 };

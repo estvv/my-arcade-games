@@ -10,11 +10,12 @@
     #include <SFML/System.hpp>
     #include <SFML/Audio.hpp>
 
+class All;
 class Game {
     public:
         Game(Colors colors, sf::RenderWindow &window);
         void displayGame(void);
-        void manageGameEvent(sf::Event event, enum screens &screen_id);
+        void manageGameEvent(All &all);
         void update(sf::Color snakeBodyColor);
         void endOfGame(void);
         void appelEating(sf::Color snakeBodyColor);

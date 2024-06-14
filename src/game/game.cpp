@@ -1,5 +1,6 @@
 #include "game.hpp"
 #include "colors.hpp"
+#include "all.hpp"
 #include <iostream>
 
 Game::Game(Colors colors, sf::RenderWindow &window) :
@@ -27,24 +28,24 @@ Game::Game(Colors colors, sf::RenderWindow &window) :
     round_txt.setFont(font);
 }
 
-void Game::manageGameEvent(sf::Event event, enum screens &screen_id)
+void Game::manageGameEvent(All &all)
 {
-    while (window.pollEvent(event)) {
-        if (event.type == sf::Event::Closed)
+    while (window.pollEvent(all.event)) {
+        if (all.event.type == sf::Event::Closed)
             window.close();
-        if (event.type == sf::Event::KeyPressed and event.type != sf::Event::KeyReleased) {
+        if (all.event.type == sf::Event::KeyPressed and all.event.type != sf::Event::KeyReleased) {
             // Check user input
-            if (event.key.code == sf::Keyboard::Escape) {
-                screen_id = mainMenu;
+            if (all.event.key.code == sf::Keyboard::Escape) {
+                all.screen_id = mainMenu;
                 snake.head->rect.setPosition(sf::Vector2f(400, 400));
             }
-            if (event.key.code == sf::Keyboard::Z or event.key.code == sf::Keyboard::Up)
+            if (all.event.key.code == all.settings.up or all.event.key.code == sf::Keyboard::Up)
                 snake.head->moove = NORTH;
-            if (event.key.code == sf::Keyboard::S or event.key.code == sf::Keyboard::Down)
+            if (all.event.key.code == all.settings.down or all.event.key.code == sf::Keyboard::Down)
                 snake.head->moove = SOUTH;
-            if (event.key.code == sf::Keyboard::Q or event.key.code == sf::Keyboard::Left)
+            if (all.event.key.code == all.settings.left or all.event.key.code == sf::Keyboard::Left)
                 snake.head->moove = WEST;
-            if (event.key.code == sf::Keyboard::D or event.key.code == sf::Keyboard::Right)
+            if (all.event.key.code == all.settings.right or all.event.key.code == sf::Keyboard::Right)
                 snake.head->moove = EAST;
         }
     }
@@ -91,7 +92,7 @@ void Game::mooveSnake(void)
 }
 
 // Check if snake's head hit something
-void Game::endOfGame()
+void Game::endOfGame(void)
 {
     Node *node(snake.head->next);
     sf::Vector2f head_pos(snake.head->rect.getPosition());

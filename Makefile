@@ -17,7 +17,9 @@ CXXFLAGS	=	-I$(INCLUDE) \
 				-g3
 
 SRC	=	$(wildcard src/*.cpp) \
-		$(wildcard src/*/*.cpp)
+		$(wildcard src/*/*.cpp) \
+		$(wildcard src/*/*/*.cpp) \
+		$(wildcard src/*/*/*/*.cpp)
 
 OBJ	=	$(SRC:.cpp=.o)
 

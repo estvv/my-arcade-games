@@ -53,9 +53,13 @@ void Menus::initSettings(All &all)
     menusList.at(settingsFirstMenu).actionButtonsList.push_back(actionButtons(all, "PREV", sf::Vector2f(100, 50), sf::Vector2f(10, 740), goToMainMenu));
     menusList.at(settingsSecondMenu).actionButtonsList.push_back(actionButtons(all, "PREV", sf::Vector2f(100, 50), sf::Vector2f(10, 740), goToFirstSettingsMenu));
     menusList.at(settingsSecondMenu).toggledButtonsList.push_back(toggledButtons(all, "Z", sf::Vector2f(170, 50), sf::Vector2f(50, 50), noneToggled, upInputKey, all.colors.mainColor));
+    menusList.at(settingsSecondMenu).actionButtonsList.push_back(actionButtons(all, "MOVE UP", sf::Vector2f(280, 50), sf::Vector2f(300, 50), noneAction));
     menusList.at(settingsSecondMenu).toggledButtonsList.push_back(toggledButtons(all, "Q", sf::Vector2f(170, 50), sf::Vector2f(50, 110), noneToggled, leftInputKey, all.colors.mainColor));
+    menusList.at(settingsSecondMenu).actionButtonsList.push_back(actionButtons(all, "MOVE LEFT", sf::Vector2f(280, 50), sf::Vector2f(300, 110), noneAction));
     menusList.at(settingsSecondMenu).toggledButtonsList.push_back(toggledButtons(all, "S", sf::Vector2f(170, 50), sf::Vector2f(50, 170), noneToggled, downInputKey, all.colors.mainColor));
+    menusList.at(settingsSecondMenu).actionButtonsList.push_back(actionButtons(all, "MOVE DOWN", sf::Vector2f(280, 50), sf::Vector2f(300, 170), noneAction));
     menusList.at(settingsSecondMenu).toggledButtonsList.push_back(toggledButtons(all, "D", sf::Vector2f(170, 50), sf::Vector2f(50, 230), noneToggled, rightInputKey, all.colors.mainColor));
+    menusList.at(settingsSecondMenu).actionButtonsList.push_back(actionButtons(all, "MOVE RIGHT", sf::Vector2f(280, 50), sf::Vector2f(300, 230), noneAction));
     menusList.at(settingsSecondMenu).toggledButtonsList.push_back(toggledButtons(all, "SPACE", sf::Vector2f(170, 50), sf::Vector2f(50, 290), noneToggled, noneToggled, all.colors.mainColor));
 }
 

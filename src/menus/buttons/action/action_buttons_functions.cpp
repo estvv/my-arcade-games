@@ -14,7 +14,9 @@ void playButtonFunction(All &all)
         all.game.apple.apple.setPosition(20 * (rand() % 40), 20 * (rand() % 38) + 40);
         all.game.snake.head->moove = SOUTH;
         all.game.score = 0;
+        all.game.score_txt.setString("SCORE : 0");
         all.game.round = 1;
+        all.game.round_txt.setString("ROUND : 0");
     }
     all.screen_id = playScreen;
 }

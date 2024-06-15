@@ -7,6 +7,15 @@ void goToMainMenu(All &all)
 
 void playButtonFunction(All &all)
 {
+    if (all.screen_id != pauseMenu) {
+        all.game.snake.head->rect.setPosition(sf::Vector2f(400, 400));
+        all.game.snake.head->next = nullptr;
+        srand(time(NULL));
+        all.game.apple.apple.setPosition(20 * (rand() % 40), 20 * (rand() % 38) + 40);
+        all.game.snake.head->moove = SOUTH;
+        all.game.score = 0;
+        all.game.round = 1;
+    }
     all.screen_id = playScreen;
 }
 

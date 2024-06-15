@@ -16,8 +16,8 @@ All::All(void) :
     }
     window.setPosition(sf::Vector2i(560, 100));
     window.setSize(sf::Vector2u(800, 800));
-    if (not logo_texture.loadFromFile("./assets/image/snake.png")) {
-        std::cerr << "Problem with snake.png." << std::endl;
+    if (not logo_texture.loadFromFile("./assets/image/my_snake_logo.png")) {
+        std::cerr << "Problem with my_snake_logo.png." << std::endl;
         exit(84);
     }
     logo_sprite.setTexture(logo_texture);
@@ -57,7 +57,7 @@ void All::manageWindow(void)
     window.clear(colors.mainColor);
     if (screen_id == playScreen) {
         game.manageGameEvent(*this);
-        game.update(colors.snakeBody);
+        game.update(*this);
         game.displayGame();
     } else {
         menus.menusList.at(screen_id).updateMenus(colors);

@@ -54,7 +54,9 @@ void Menu::inputKey(All &all)
     if (all.event.key.code == sf::Keyboard::Escape) {
         for (toggledButtons &button : toggledButtonsList)
             button.state = isNone;
-        if (all.screen_id != mainMenu)
+        if (all.screen_id == pauseMenu)
+            all.screen_id = playScreen;
+        else if (all.screen_id != mainMenu)
             all.screen_id = mainMenu;
         else
             window.close();

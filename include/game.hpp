@@ -16,9 +16,9 @@ class Game {
         Game(Colors colors, sf::RenderWindow &window);
         void displayGame(void);
         void manageGameEvent(All &all);
-        void update(sf::Color snakeBodyColor);
-        void endOfGame(void);
-        void appelEating(sf::Color snakeBodyColor);
+        void update(All &all);
+        void endOfGame(All &all);
+        void appelEating(All &all);
         void mooveSnake(void);
 
         Snake snake;

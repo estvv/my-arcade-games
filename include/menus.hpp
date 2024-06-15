@@ -30,6 +30,9 @@ class Menus {
         void initMain(All &all);
         void initSettings(All &all);
         void initLeaderboard(All &all);
+        void initDead(All &all);
+        void initPause(All &all);
+        void initHelp(All &all);
 
         std::vector<Menu> menusList;
     private:

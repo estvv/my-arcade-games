@@ -6,9 +6,9 @@ enum screens {
     settingsFirstMenu,
     settingsSecondMenu,
     leaderboardMenu,
-    helpMenu,
-    pauseMenu,
     deadMenu,
+    pauseMenu,
+    helpMenu,
     playScreen
 };
 

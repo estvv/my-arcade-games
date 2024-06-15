@@ -35,10 +35,8 @@ void Game::manageGameEvent(All &all)
             window.close();
         if (all.event.type == sf::Event::KeyPressed and all.event.type != sf::Event::KeyReleased) {
             // Check user input
-            if (all.event.key.code == sf::Keyboard::Escape) {
-                all.screen_id = mainMenu;
-                snake.head->rect.setPosition(sf::Vector2f(400, 400));
-            }
+            if (all.event.key.code == sf::Keyboard::Escape)
+                all.screen_id = pauseMenu;
             if (all.event.key.code == all.settings.up or all.event.key.code == sf::Keyboard::Up)
                 snake.head->moove = NORTH;
             if (all.event.key.code == all.settings.down or all.event.key.code == sf::Keyboard::Down)
@@ -52,11 +50,11 @@ void Game::manageGameEvent(All &all)
 }
 
 // Game update
-void Game::update(sf::Color snakeBodyColor)
+void Game::update(All &all)
 {
     mooveSnake();
-    endOfGame();
-    appelEating(snakeBodyColor);
+    endOfGame(all);
+    appelEating(all);
 }
 
 // Mooving snake with Snake logic
@@ -92,23 +90,23 @@ void Game::mooveSnake(void)
 }
 
 // Check if snake's head hit something
-void Game::endOfGame(void)
+void Game::endOfGame(All &all)
 {
     Node *node(snake.head->next);
     sf::Vector2f head_pos(snake.head->rect.getPosition());
 
     // If the snake's head is out of the arena
     if (head_pos.x < 0 || head_pos.x > 800 || head_pos.y < 40 || head_pos.y > 800)
-        window.close();
+        all.screen_id = deadMenu;
     while (node) {
         if (node->rect.getPosition() == head_pos)
-            window.close();
+            all.screen_id = deadMenu;
         node = node->next;
     }
 }
 
 // Snake's head is on an apple
-void Game::appelEating(sf::Color snakeBodyColor)
+void Game::appelEating(All &all)
 {
     Node *node(snake.head);
     sf::Vector2f snake_pos(snake.head->rect.getPosition());
@@ -129,7 +127,7 @@ void Game::appelEating(sf::Color snakeBodyColor)
         }
         score = score + 1 + round;
         score_txt.setString("SCORE : " + std::to_string(score));
-        snake.addBody(snakeBodyColor);
+        snake.addBody(all.colors.snakeBody);
     }
 }
 

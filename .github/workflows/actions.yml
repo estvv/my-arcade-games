@@ -52,8 +52,8 @@ jobs:
             if (cat "Makefile" | grep "tests_run"); then
               make tests_run
             fi
-      - name: Clean Unit tests (make tests_clean).
+      - name: Clean Unit tests (make fclean).
         run: |
-            if (cat "Makefile" | grep "tests_clean"); then
-              make tests_clean
+            if (cat "Makefile" | grep "fclean"); then
+              make fclean
             fi

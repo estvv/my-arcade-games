@@ -4,3 +4,5 @@ my_snake
 vgcore.*
 objects
 unit_tests
+*.gcda
+*.gcno

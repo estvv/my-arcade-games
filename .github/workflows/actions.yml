@@ -12,6 +12,12 @@ env:
   EXECUTABLES: "my_snake"
 
 jobs:
+  install_sfml:
+    name: install SFML
+    runs-on: ubuntu-latest
+    steps:
+      - name: installation
+        run: sudo apt-get install libsfml-dev
   check_program_compilation:
     name: check_program_compilation
     runs-on: ubuntu-latest

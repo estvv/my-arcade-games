@@ -2,3 +2,5 @@
 my_snake
 *.o
 vgcore.*
+objects
+unit_tests

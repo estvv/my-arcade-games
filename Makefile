@@ -45,6 +45,9 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp | $(OBJ_SUBDIRS)
 $(OBJ_SUBDIRS):
 	mkdir -p $@
 
+$(OBJ_DIR):
+	mkdir -p $@
+
 clean:
 	$(RM) -r $(OBJ_DIR)
 

@@ -5,41 +5,19 @@
 ## Makefile
 ##
 
-BINARY	=	my_snake
-
-CXX	=	g++
-
-CXXFLAGS	=	-I$(INCLUDE) \
-				-std=c++17 \
-				-lsfml-graphics \
-				-lsfml-window \
-				-lsfml-system \
-				-g3
-
-SRC	=	$(wildcard src/*.cpp) \
-		$(wildcard src/*/*.cpp) \
-		$(wildcard src/*/*/*.cpp) \
-		$(wildcard src/*/*/*/*.cpp)
-
-OBJ	=	$(SRC:.cpp=.o)
-
-INCLUDE	=	include
-
-CFLAGS	=	-I$(INCLUDE) \
-			-lsfml-graphics \
-			-lsfml-window \
-			-lsfml-system \
-			-lm \
-			-g3 \
-			-Wall \
-			-Werror \
-			-Wextra \
-			-W
+BINARY		=	my_snake
+CXX			=	g++
+SRC_DIR		=	src
+SRC_FILES	=	$(shell find $(SRC_DIR) -name "*.cpp")
+OBJ			=	$(SRC:.cpp=.o)
+INCLUDE		=	include
+CXXFLAGS	=	-I$(INCLUDE) -g3 -Wall -Werror -Wextra
+LDFLAGS		=	-lsfml-graphics -lsfml-window -lsfml-system -lm
 
 all:	$(BINARY)
 
-$(BINARY):	$(OBJ)
-	$(CXX) -o $(BINARY) $(OBJ) $(CFLAGS)
+$(BINARY): $(OBJ)
+	$(CXX) $(CXXFLAGS) -o $(BINARY) $(OBJ) $(LDFLAGS)
 
 clean:
 	$(RM) $(OBJ)

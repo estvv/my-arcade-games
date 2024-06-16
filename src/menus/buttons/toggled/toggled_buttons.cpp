@@ -3,9 +3,9 @@
 #include <iostream>
 
 toggledButtons::toggledButtons(All &all, const std::string &txt, sf::Vector2f size, sf::Vector2f new_pos, toggledButtonFunc clickedFunction, toggledButtonFunc inputKeyFunction, sf::Color background) :
-    state(isNone),
     clickedFunction(clickedFunction),
-    inputKeyFunction(inputKeyFunction)
+    inputKeyFunction(inputKeyFunction),
+    state(isNone)
 {
     button_rect = sf::RectangleShape(size);
     button_rect.setOutlineThickness(2);

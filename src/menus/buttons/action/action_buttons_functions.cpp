@@ -18,6 +18,7 @@ void playButtonFunction(All &all)
         all.game.round = 1;
         all.game.round_txt.setString("ROUND : 0");
     }
+    all.menus.menusList.at(pauseMenu).actionButtonsList.at(3).button_text.setString(std::to_string(all.game.score));
     all.screen_id = playScreen;
 }
 
@@ -94,7 +95,7 @@ void soundVolumeDown(All &all)
     }
 }
 
-void noneAction(All &all)
+void noneAction(UN All &all)
 {
     return;
 }

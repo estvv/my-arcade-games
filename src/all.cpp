@@ -4,7 +4,6 @@
 enum screens screen_id = mainMenu;
 
 All::All(void) :
-    screen_id(mainMenu),
     colors(),
     game(colors, window),
     menus(this, window),

@@ -1,6 +1,6 @@
 #include "all.hpp"
 
-int main(int ac, char **av)
+int main(int ac, UN char **av)
 {
     All all;
 

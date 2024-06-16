@@ -6,6 +6,6 @@ Settings::Settings(void) :
     left(sf::Keyboard::Q),
     right(sf::Keyboard::D),
     masterVolume(50),
-    soundVolume(50),
-    musicVolume(50)
+    musicVolume(50),
+    soundVolume(50)
 {}

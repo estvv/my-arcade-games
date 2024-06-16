@@ -4,15 +4,15 @@
 #include <iostream>
 
 Game::Game(Colors colors, sf::RenderWindow &window) :
+    snake(colors.snakeHead),
+    apple(colors.apple),
     window(window),
     arena(sf::Vector2f(796, 758)),
     font(),
     score_txt("SCORE : 0", font, 30),
     round_txt("ROUND : 1", font, 30),
     score(0),
-    round(0),
-    snake(colors.snakeHead),
-    apple(colors.apple)
+    round(0)
 {
     arena.setOutlineThickness(2);
     arena.setOutlineColor(sf::Color(0, 240, 0));
@@ -60,7 +60,6 @@ void Game::update(All &all)
 // Mooving snake with Snake logic
 void Game::mooveSnake(void)
 {
-    Node *node(snake.head->next);
     sf::Vector2f rect_pos(snake.head->rect.getPosition());
     sf::Vector2f body_pos;
     sf::Time time;
@@ -127,6 +126,7 @@ void Game::appelEating(All &all)
         }
         score = score + 1 + round;
         score_txt.setString("SCORE : " + std::to_string(score));
+        all.menus.menusList.at(pauseMenu).actionButtonsList.at(3).button_text.setString(std::to_string(all.game.score));
         snake.addBody(all.colors.snakeBody);
     }
 }

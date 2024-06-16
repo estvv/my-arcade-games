@@ -58,7 +58,7 @@ void setPinkTheme(All &all, toggledButtons &button)
     button.button_rect.setOutlineColor(sf::Color::Black);
 }
 
-void setRainbowTheme(All &all, toggledButtons &button)
+void setRainbowTheme(All &all, UN toggledButtons &button)
 {
     all.updateThemeColors();
 }
@@ -95,7 +95,7 @@ void leftInputKey(All &all, toggledButtons &button)
     }
 }
 
-void noneToggled(All &all, toggledButtons &button)
+void noneToggled(UN All &all, UN toggledButtons &button)
 {
     return;
 }

@@ -3,8 +3,8 @@
 
 Node::Node(Node *prev, sf::Vector2f pos,  sf::Color color) :
     rect(sf::RectangleShape(sf::Vector2f(20, 20))),
-    prev(prev),
-    next(nullptr)
+    next(nullptr),
+    prev(prev)
 {
     rect.setFillColor(color);
     rect.setPosition(pos);

@@ -1,5 +1,6 @@
 #ifndef ALL_HPP_
     #define ALL_HPP_
+    #define UN __attribute__((unused))
     #include "game.hpp"
     #include "menus.hpp"
     #include "enum.hpp"

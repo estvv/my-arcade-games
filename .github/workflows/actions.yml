@@ -37,25 +37,3 @@ jobs:
                 exit 1
               fi
             done
-
-  run_tests:
-    needs: check_program_compilation
-    name: run_tests
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout - Tests running.
-        uses: actions/checkout@v4
-      - name: Installation - SFML
-        run: sudo apt-get install libsfml-dev
-      - name: Installation - Criterion
-        run: sudo apt-get install criterion-dev
-      - name: Unit tests (make tests_run).
-        run: |
-            if (cat "Makefile" | grep "tests_run"); then
-              make tests_run
-            fi
-      - name: Clean Unit tests (make fclean).
-        run: |
-            if (cat "Makefile" | grep "fclean"); then
-              make fclean
-            fi

@@ -12,6 +12,6 @@ In this game, you will be able to :
 -  Compare your score to other person with the leaderboard.
 
 ## REQUIREMENTS
-- SMFL library.
+- SMFL library -> https://github.com/SFML/SFML
 
 ## INCOMING

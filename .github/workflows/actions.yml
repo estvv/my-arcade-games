@@ -19,6 +19,7 @@ jobs:
       - name: installation
         run: sudo apt-get install libsfml-dev
   check_program_compilation:
+    needs: install_sfml
     name: check_program_compilation
     runs-on: ubuntu-latest
     steps:

@@ -10,7 +10,7 @@ All::All(void) :
     window(sf::VideoMode(800, 800), "my-snake", sf::Style::Default)
 {
     if (!font.loadFromFile("assets/font/pixel.ttf")) {
-        std::cerr << "Problem with pixel.ttf." << std::endl;
+       std::cerr << "Problem with pixel.ttf." << std::endl;
         exit(84);
     }
     window.setPosition(sf::Vector2i(560, 100));

@@ -50,8 +50,8 @@ void Menus::initSettings(All &all)
     menusList.at(settingsFirstMenu).toggledButtonsList.push_back(toggledButtons(all, "", sf::Vector2f(100, 50), sf::Vector2f(275, 720), setPinkTheme, noneToggled, sf::Color(255, 204, 230)));
     menusList.at(settingsFirstMenu).toggledButtonsList.push_back(toggledButtons(all, "", sf::Vector2f(100, 50), sf::Vector2f(425, 720), noneToggled, noneToggled, sf::Color(255, 255, 255)));
     menusList.at(settingsFirstMenu).actionButtonsList.push_back(actionButtons(all, "NEXT", sf::Vector2f(100, 50), sf::Vector2f(690, 740), goToSecondSettingsMenu));
-    menusList.at(settingsFirstMenu).actionButtonsList.push_back(actionButtons(all, "PREV", sf::Vector2f(100, 50), sf::Vector2f(10, 740), goToMainMenu));
-    menusList.at(settingsSecondMenu).actionButtonsList.push_back(actionButtons(all, "PREV", sf::Vector2f(100, 50), sf::Vector2f(10, 740), goToFirstSettingsMenu));
+    menusList.at(settingsFirstMenu).actionButtonsList.push_back(actionButtons(all, "BACK", sf::Vector2f(100, 50), sf::Vector2f(10, 740), goToMainMenu));
+    menusList.at(settingsSecondMenu).actionButtonsList.push_back(actionButtons(all, "BACK", sf::Vector2f(100, 50), sf::Vector2f(10, 740), goToFirstSettingsMenu));
     menusList.at(settingsSecondMenu).toggledButtonsList.push_back(toggledButtons(all, "Z", sf::Vector2f(170, 50), sf::Vector2f(50, 50), noneToggled, upInputKey, all.colors.mainColor));
     menusList.at(settingsSecondMenu).actionButtonsList.push_back(actionButtons(all, "MOVE UP", sf::Vector2f(280, 50), sf::Vector2f(300, 50), noneAction));
     menusList.at(settingsSecondMenu).toggledButtonsList.push_back(toggledButtons(all, "Q", sf::Vector2f(170, 50), sf::Vector2f(50, 110), noneToggled, leftInputKey, all.colors.mainColor));
@@ -92,7 +92,7 @@ void Menus::initLeaderboard(All &all)
     menusList.at(leaderboardMenu).actionButtonsList.push_back(actionButtons(all, "9TH", sf::Vector2f(100, 50), sf::Vector2f(100, 620), noneAction));
     menusList.at(leaderboardMenu).actionButtonsList.push_back(actionButtons(all, "NAME", sf::Vector2f(300, 50), sf::Vector2f(250, 620), noneAction));
     menusList.at(leaderboardMenu).actionButtonsList.push_back(actionButtons(all, "VAL", sf::Vector2f(150, 50), sf::Vector2f(600, 620), noneAction));
-    menusList.at(leaderboardMenu).actionButtonsList.push_back(actionButtons(all, "PREV", sf::Vector2f(100, 50), sf::Vector2f(10, 740), goToMainMenu));
+    menusList.at(leaderboardMenu).actionButtonsList.push_back(actionButtons(all, "BACK", sf::Vector2f(100, 50), sf::Vector2f(10, 740), goToMainMenu));
 }
 
 void Menus::initDead(All &all)
@@ -117,5 +117,19 @@ void Menus::initPause(All &all)
 
 void Menus::initHelp(All &all)
 {
-    menusList.at(helpMenu).actionButtonsList.push_back(actionButtons(all, "", sf::Vector2f(50, 50), sf::Vector2f(375, 375), noneAction));
+    menusList.at(helpMenu).actionButtonsList.push_back(actionButtons(all, "CONTROLS", sf::Vector2f(400, 50), sf::Vector2f(200, 130), noneAction));
+    menusList.at(helpMenu).actionButtonsList.push_back(actionButtons(all, "Z", sf::Vector2f(50, 50), sf::Vector2f(260, 190), noneAction));
+    menusList.at(helpMenu).actionButtonsList.push_back(actionButtons(all, "Q", sf::Vector2f(50, 50), sf::Vector2f(200, 250), noneAction));
+    menusList.at(helpMenu).actionButtonsList.push_back(actionButtons(all, "S", sf::Vector2f(50, 50), sf::Vector2f(260, 250), noneAction));
+    menusList.at(helpMenu).actionButtonsList.push_back(actionButtons(all, "D", sf::Vector2f(50, 50), sf::Vector2f(320, 250), noneAction));
+    menusList.at(helpMenu).actionButtonsList.push_back(actionButtons(all, "SPACE", sf::Vector2f(170, 50), sf::Vector2f(200, 310), noneAction));
+    menusList.at(helpMenu).actionButtonsList.push_back(actionButtons(all, "^", sf::Vector2f(50, 50), sf::Vector2f(485, 190), noneAction));
+    menusList.at(helpMenu).actionButtonsList.push_back(actionButtons(all, "<", sf::Vector2f(50, 50), sf::Vector2f(425, 250), noneAction));
+    menusList.at(helpMenu).actionButtonsList.push_back(actionButtons(all, "-", sf::Vector2f(50, 50), sf::Vector2f(485, 250), noneAction));
+    menusList.at(helpMenu).actionButtonsList.push_back(actionButtons(all, ">", sf::Vector2f(50, 50), sf::Vector2f(545, 250), noneAction));
+    menusList.at(helpMenu).actionButtonsList.push_back(actionButtons(all, "SPACE", sf::Vector2f(170, 50), sf::Vector2f(425, 310), noneAction));
+    menusList.at(helpMenu).actionButtonsList.push_back(actionButtons(all, "OBJECTIVE", sf::Vector2f(400, 50), sf::Vector2f(200, 400), noneAction));
+    menusList.at(helpMenu).actionButtonsList.push_back(actionButtons(all, "EAT APPLES", sf::Vector2f(250, 50), sf::Vector2f(270, 460), noneAction));
+    menusList.at(helpMenu).actionButtonsList.push_back(actionButtons(all, "AVOID WALLS", sf::Vector2f(250, 50), sf::Vector2f(270, 520), noneAction));
+    menusList.at(helpMenu).actionButtonsList.push_back(actionButtons(all, "BACK", sf::Vector2f(100, 50), sf::Vector2f(10, 740), goToMainMenu));
 }

@@ -1,9 +1,9 @@
+# COMPILER
+CXX	=	g++
+
 # BINARY NAME
 BINARY		=	my_snake
 BINARY_TEST	=	unit_tests
-
-# COMPILER
-CXX = g++
 
 # DIRECTORIES
 INCLUDE_DIR	=	include
@@ -16,13 +16,12 @@ INCLUDE_FILES	=	$(shell find $(INCLUDE_DIR) -type d)
 INCLUDE_FLAGS	=	$(addprefix -I, $(INCLUDE_FILES))
 
 # FILES
-MAIN_FILE	=	$(SRC_DIR)/main.cpp
 SRC_FILES	=	$(shell find $(SRC_DIR) -name "*.cpp")
 OBJ_FILES	=	$(patsubst $(SRC_DIR)/%.cpp, $(OBJ_DIR)/%.o, $(SRC_FILES))
 
 # CRITERION
+MAIN_FILE	=	$(SRC_DIR)/main.cpp
 TEST_FILES		=	$(shell find $(TEST_DIR) -name "*.cpp" -not -path $(MAIN_FILE))
-TEST_OBJ_FILES	=	$(patsubst $(TEST_DIR)/%.cpp, $(OBJ_DIR)/%.o, $(TEST_FILES))
 
 # SUBDIRECTORIES
 OBJ_SUBDIRS	=	$(sort $(dir $(OBJ_FILES) $(TEST_OBJ_FILES)))

@@ -27,8 +27,8 @@ TEST_FILES		=	$(shell find $(TEST_DIR) -name "*.cpp" -not -path $(MAIN_FILE))
 OBJ_SUBDIRS	=	$(sort $(dir $(OBJ_FILES) $(TEST_OBJ_FILES)))
 
 # FLAGS
-CXXFLAGS	=	$(INCLUDE_FLAGS) -Wall -Werror -Wextra -std=c++17 -g3
-LDFLAGS		=	-lsfml-graphics -lsfml-window -lsfml-system -lm
+CXXFLAGS	=	$(INCLUDE_FLAGS) -std=c++17 -g3
+LDFLAGS		=	-lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
 TESTSFLAGS	=	--coverage -lcriterion
 
 all: $(BINARY)

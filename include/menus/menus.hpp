@@ -1,12 +1,14 @@
 #ifndef MENUS_HPP_
     #define MENUS_HPP_
-    #include "buttons.hpp"
-    #include "enum.hpp"
-    #include "colors.hpp"
     #include <SFML/Graphics.hpp>
     #include <SFML/Window.hpp>
     #include <SFML/System.hpp>
     #include <SFML/Audio.hpp>
+    #include <vector>
+    #include "buttons.hpp"
+    #include "enum.hpp"
+    #include "colors.hpp"
+    #include "assets.hpp"
 
 class Menu {
     public:

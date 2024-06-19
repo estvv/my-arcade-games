@@ -9,4 +9,5 @@ Colors::Colors() :
     snakeHead(sf::Color(0, 150, 0)),
     snakeBody(sf::Color(0, 200, 0)),
     apple(sf::Color::Red)
-{}
+{
+}

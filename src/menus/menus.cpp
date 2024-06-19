@@ -100,7 +100,7 @@ void Menus::initDead(All &all)
     menusList.at(deadMenu).actionButtonsList.push_back(actionButtons(all, "RETRY", sf::Vector2f(400, 50), sf::Vector2f(200, 300), playButtonFunction));
     menusList.at(deadMenu).actionButtonsList.push_back(actionButtons(all, "MENU", sf::Vector2f(400, 50), sf::Vector2f(200, 400), goToMainMenu));
     menusList.at(deadMenu).actionButtonsList.push_back(actionButtons(all, "SCORE :", sf::Vector2f(200, 50), sf::Vector2f(200, 500), noneAction));
-    menusList.at(deadMenu).actionButtonsList.push_back(actionButtons(all, "X", sf::Vector2f(150, 50), sf::Vector2f(450, 500), noneAction));
+    menusList.at(deadMenu).actionButtonsList.push_back(actionButtons(all, "0", sf::Vector2f(150, 50), sf::Vector2f(450, 500), noneAction));
     menusList.at(deadMenu).actionButtonsList.push_back(actionButtons(all, "HIGHEST :", sf::Vector2f(200, 50), sf::Vector2f(200, 600), noneAction));
     menusList.at(deadMenu).actionButtonsList.push_back(actionButtons(all, "X", sf::Vector2f(150, 50), sf::Vector2f(450, 600), noneAction));
 }

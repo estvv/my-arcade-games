@@ -17,7 +17,7 @@ actionButtons::actionButtons(All &all, const std::string &txt, sf::Vector2f size
         new_pos.x + (button_rect.getSize().x / 2) - (txt.length() * 10),
         new_pos.y + 5
     );
-    button_text.setFont(all.font);
+    button_text.setFont(all.assets.fonts.at(0).font);
     if (txt == "EXIT")
         button_text.setFillColor(sf::Color(200, 0, 0));
 }

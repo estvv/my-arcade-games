@@ -1,17 +1,16 @@
 #ifndef ALL_HPP_
     #define ALL_HPP_
     #define UN __attribute__((unused))
+    #include <SFML/Graphics.hpp>
+    #include <SFML/Window.hpp>
+    #include <SFML/System.hpp>
+    #include <SFML/Audio.hpp>
     #include "game.hpp"
     #include "menus.hpp"
     #include "enum.hpp"
     #include "colors.hpp"
     #include "settings.hpp"
-    #include <vector>
-    #include <string>
-    #include <SFML/Graphics.hpp>
-    #include <SFML/Window.hpp>
-    #include <SFML/System.hpp>
-    #include <SFML/Audio.hpp>
+    #include "assets.hpp"
 
 class All {
     public:
@@ -22,13 +21,11 @@ class All {
 
         Colors colors;
         Settings settings;
+        Assets assets;
         Game game;
         Menus menus;
         sf::RenderWindow window;
         sf::Event event;
-        sf::Font font;
-        sf::Sprite logo_sprite;
-        sf::Texture logo_texture;
         enum screens screen_id = mainMenu;
     private:
 };

@@ -17,7 +17,7 @@ Snake::Snake(sf::Color snakeHeadColor) : head(nullptr)
     head = new Node(nullptr, sf::Vector2f(400, 400), snakeHeadColor);
 }
 
-// Insert a node in the linked list
+// Insert a node in the filepathed list
 void Snake::InsertNode(sf::Vector2f pos, sf::Color snakeBodyColor)
 {
     Node *curr = head;

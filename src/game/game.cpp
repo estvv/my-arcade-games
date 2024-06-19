@@ -127,6 +127,7 @@ void Game::appelEating(All &all)
         score = score + 1 + round;
         score_txt.setString("SCORE : " + std::to_string(score));
         all.menus.menusList.at(pauseMenu).actionButtonsList.at(3).button_text.setString(std::to_string(all.game.score));
+        all.menus.menusList.at(deadMenu).actionButtonsList.at(3).button_text.setString(std::to_string(all.game.score));
         snake.addBody(all.colors.snakeBody);
     }
 }

@@ -3,7 +3,8 @@
 
 Menu::Menu(sf::RenderWindow &window) :
     window(window)
-{}
+{
+}
 
 void Menu::manageMenusEvent(All &all)
 {

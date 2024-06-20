@@ -2,7 +2,7 @@
 my_snake
 *.o
 vgcore.*
-objects
+build
 unit_tests
 *.gcda
 *.gcno

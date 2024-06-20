@@ -4,13 +4,14 @@
     #include <SFML/Window.hpp>
     #include <SFML/System.hpp>
     #include <SFML/Audio.hpp>
+    #include <memory>
 
 class Sound {
     public:
         Sound(std::string filepath);
 
-        sf::SoundBuffer soundBuffer;
         sf::Sound sound;
+        std::shared_ptr<sf::SoundBuffer> soundBuffer;
     private:
 };
 

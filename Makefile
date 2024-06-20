@@ -8,7 +8,7 @@ BINARY_TEST	=	unit_tests
 # DIRECTORIES
 INCLUDE_DIR	=	include
 SRC_DIR		=	src
-OBJ_DIR		=	objects
+OBJ_DIR		=	build
 TEST_DIR	=	tests
 
 # HEADERS
@@ -21,13 +21,13 @@ OBJ_FILES	=	$(patsubst $(SRC_DIR)/%.cpp, $(OBJ_DIR)/%.o, $(SRC_FILES))
 
 # CRITERION
 MAIN_FILE	=	$(SRC_DIR)/main.cpp
-TEST_FILES		=	$(shell find $(TEST_DIR) -name "*.cpp" -not -path $(MAIN_FILE))
+TEST_FILES	=	$(shell find $(TEST_DIR) -name "*.cpp" -not -path $(MAIN_FILE))
 
 # SUBDIRECTORIES
 OBJ_SUBDIRS	=	$(sort $(dir $(OBJ_FILES) $(TEST_OBJ_FILES)))
 
 # FLAGS
-CXXFLAGS	=	$(INCLUDE_FLAGS) -std=c++17 -g3
+CXXFLAGS	=	$(INCLUDE_FLAGS) -Wall -Werror -Wextra -W -std=c++17 -g3
 LDFLAGS		=	-lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
 TESTSFLAGS	=	--coverage -lcriterion
 

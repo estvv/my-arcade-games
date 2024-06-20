@@ -26,6 +26,7 @@ void Menus::initMain(All &all)
     menusList.at(mainMenu).actionButtonsList.push_back(actionButtons(all, "LEADERBOARD", sf::Vector2f(400, 50), sf::Vector2f(200, 500), leaderButtonFunction));
     menusList.at(mainMenu).actionButtonsList.push_back(actionButtons(all, "HELP", sf::Vector2f(400, 50), sf::Vector2f(200, 600), helpButtonFunction));
     menusList.at(mainMenu).actionButtonsList.push_back(actionButtons(all, "EXIT", sf::Vector2f(400, 50), sf::Vector2f(200, 700), exitButtonFunction));
+    menusList.at(mainMenu).actionButtonsList.at(4).button_text.setFillColor(sf::Color(200, 0, 0));
 }
 
 void Menus::initSettings(All &all)

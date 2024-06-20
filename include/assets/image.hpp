@@ -4,6 +4,7 @@
     #include <SFML/Window.hpp>
     #include <SFML/System.hpp>
     #include <SFML/Audio.hpp>
+    #include <memory>
 
 class Image {
     public:
@@ -11,7 +12,7 @@ class Image {
         void display(sf::RenderWindow &window);
 
         sf::Sprite sprite;
-        sf::Texture texture;
+        std::shared_ptr<sf::Texture> texture;
     private:
 };
 

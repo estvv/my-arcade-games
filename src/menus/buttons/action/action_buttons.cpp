@@ -4,6 +4,8 @@
 
 actionButtons::actionButtons(All &all, const std::string &txt, sf::Vector2f size, sf::Vector2f new_pos, actionButtonFunc func) :
     func(func),
+    mouseHoverSound(all.assets.sounds.at(SOUND_HOVER)),
+    mouseClickSound(all.assets.sounds.at(SOUND_CLICK)),
     state(isNone)
 {
     button_rect = sf::RectangleShape(size);
@@ -18,8 +20,6 @@ actionButtons::actionButtons(All &all, const std::string &txt, sf::Vector2f size
         new_pos.y + 5
     );
     button_text.setFont(all.assets.fonts.at(0).font);
-    if (txt == "EXIT")
-        button_text.setFillColor(sf::Color(200, 0, 0));
 }
 
 void actionButtons::isHover(Colors colors, sf::RenderWindow &window)
@@ -29,6 +29,8 @@ void actionButtons::isHover(Colors colors, sf::RenderWindow &window)
 
     rect_pos = button_rect.getGlobalBounds();
     if (rect_pos.contains(mouse_pos.x, mouse_pos.y)) {
+        if (state != mouseHover)
+            mouseHoverSound.sound.play();
         if (button_text.getString().getSize() != 0)
             button_rect.setFillColor(colors.buttonHover);
         state = mouseHover;
@@ -45,6 +47,7 @@ void actionButtons::isClicked(Colors colors)
         if (button_text.getString().getSize() != 0)
             button_rect.setFillColor(colors.buttonClicked);
         state = mouseClicked;
+        mouseClickSound.sound.play();
     } else {
         if (button_text.getString().getSize() != 0)
             button_rect.setFillColor(colors.mainColor);

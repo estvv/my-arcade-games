@@ -13,7 +13,7 @@
 class All;
 class Game {
     public:
-        Game(Colors colors, sf::RenderWindow &window);
+        Game(All *all, Colors colors, sf::RenderWindow &window);
         void displayGame(void);
         void manageGameEvent(All &all);
         void update(All &all);
@@ -26,7 +26,6 @@ class Game {
         sf::RenderWindow &window;
         sf::Clock clock;
         sf::RectangleShape arena;
-        sf::Font font;
         sf::Text score_txt;
         sf::Text round_txt;
         unsigned int score;

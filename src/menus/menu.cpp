@@ -53,6 +53,7 @@ void Menu::inputClickReleased(All &all)
 void Menu::inputKey(All &all)
 {
     if (all.event.key.code == sf::Keyboard::Escape) {
+        all.assets.sounds.at(SOUND_ESCAPE).sound.play();
         for (toggledButtons &button : toggledButtonsList)
             button.state = isNone;
         if (all.screen_id == pauseMenu)
@@ -63,8 +64,10 @@ void Menu::inputKey(All &all)
             window.close();
     }
     for (toggledButtons &button : toggledButtonsList) {
-        if (button.state == mouseClicked)
+        if (button.state == mouseClicked) {
             button.inputKeyFunction(all, button);
+            button.mouseInputSound.sound.play();
+        }
     }
 }
 

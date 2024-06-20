@@ -3,14 +3,13 @@
 #include "all.hpp"
 #include <iostream>
 
-Game::Game(Colors colors, sf::RenderWindow &window) :
+Game::Game(All *all, Colors colors, sf::RenderWindow &window) :
     snake(colors.snakeHead),
     apple(colors.apple),
     window(window),
     arena(sf::Vector2f(796, 758)),
-    font(),
-    score_txt("SCORE : 0", font, 30),
-    round_txt("ROUND : 1", font, 30),
+    score_txt("SCORE : 0", all->assets.fonts.at(0).font, 30),
+    round_txt("ROUND : 1", all->assets.fonts.at(0).font, 30),
     score(0),
     round(0)
 {
@@ -20,12 +19,6 @@ Game::Game(Colors colors, sf::RenderWindow &window) :
     arena.setFillColor(colors.mainColor);
     score_txt.setPosition(sf::Vector2f(0, 0));
     round_txt.setPosition(sf::Vector2f(600, 0));
-    if (not font.loadFromFile("./assets/font/pixel.ttf")) {
-        std::cerr << "Problem with pixel.ttf." << std::endl;
-        exit(84);
-    }
-    score_txt.setFont(font);
-    round_txt.setFont(font);
 }
 
 void Game::manageGameEvent(All &all)
@@ -102,6 +95,8 @@ void Game::endOfGame(All &all)
             all.screen_id = deadMenu;
         node = node->next;
     }
+    if (all.screen_id == deadMenu)
+        all.assets.sounds.at(SOUND_DEATH).sound.play();
 }
 
 // Snake's head is on an apple
@@ -128,6 +123,7 @@ void Game::appelEating(All &all)
         score_txt.setString("SCORE : " + std::to_string(score));
         all.menus.menusList.at(pauseMenu).actionButtonsList.at(3).button_text.setString(std::to_string(all.game.score));
         all.menus.menusList.at(deadMenu).actionButtonsList.at(3).button_text.setString(std::to_string(all.game.score));
+        all.assets.sounds.at(SOUND_APPLE).sound.play();
         snake.addBody(all.colors.snakeBody);
     }
 }

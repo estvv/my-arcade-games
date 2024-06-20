@@ -15,7 +15,7 @@ class Assets {
 
         std::vector<Sound> sounds;
         std::vector<Image> images;
-        std::vector<Music> musics;
+        //std::vector<Music> musics;
         std::vector<Font> fonts;
     private:
 };

@@ -1,12 +1,14 @@
 #ifndef BUTTONS_HPP_
     #define BUTTONS_HPP_
-    #include "enum.hpp"
-    #include "colors.hpp"
     #include <SFML/Graphics.hpp>
     #include <SFML/Window.hpp>
     #include <SFML/System.hpp>
     #include <SFML/Audio.hpp>
+    #include "enum.hpp"
+    #include "colors.hpp"
+    #include "sound.hpp"
 
+class Assets;
 class All;
 class toggledButtons;
 typedef void (*actionButtonFunc)(All &);
@@ -52,6 +54,9 @@ class toggledButtons {
         sf::Text button_text;
         toggledButtonFunc clickedFunction;
         toggledButtonFunc inputKeyFunction;
+        Sound mouseHoverSound;
+        Sound mouseInputSound;
+        Sound mouseClickSound;
         buttonState state;
     private:
 };
@@ -67,6 +72,8 @@ class actionButtons {
         sf::RectangleShape button_rect;
         sf::Text button_text;
         actionButtonFunc func;
+        Sound mouseHoverSound;
+        Sound mouseClickSound;
         buttonState state;
     private:
 };

@@ -6,7 +6,7 @@ enum screens screen_id = mainMenu;
 All::All(void) :
     colors(),
     assets(),
-    game(colors, window),
+    game(this, colors, window),
     menus(this, window),
     window(sf::VideoMode(800, 800), "my-snake", sf::Style::Default)
 {

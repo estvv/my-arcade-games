@@ -22,6 +22,7 @@ class Menu {
 
         std::vector<toggledButtons> toggledButtonsList;
         std::vector<actionButtons> actionButtonsList;
+        std::vector<Buttons> buttonsList;
         sf::RenderWindow &window;
     private:
 };

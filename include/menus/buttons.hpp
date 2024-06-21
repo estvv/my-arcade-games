@@ -78,4 +78,17 @@ class actionButtons {
     private:
 };
 
+class Buttons {
+    public:
+        Buttons(All &all, const std::string &txt, sf::Vector2f size, sf::Vector2f new_pos);
+        void isHover(Colors colors, sf::RenderWindow &window);
+        void displayButtons(sf::RenderWindow &window);
+
+        sf::RectangleShape button_rect;
+        sf::Text button_text;
+        Sound mouseHoverSound;
+        buttonState state;
+    private:
+};
+
 #endif /* !BUTTONS_HPP_ */

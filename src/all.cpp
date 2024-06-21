@@ -27,6 +27,10 @@ void All::updateThemeColors(void)
             button.button_rect.setOutlineColor(colors.button);
             button.button_text.setFillColor(colors.buttonText);
         }
+        for (Buttons &button : menu.buttonsList) {
+            button.button_rect.setOutlineColor(colors.button);
+            button.button_text.setFillColor(colors.buttonText);
+        }
     }
     game.apple.apple.setFillColor(colors.apple);
     game.snake.head->rect.setFillColor(colors.snakeHead);

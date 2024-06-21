@@ -18,7 +18,7 @@ void playButtonFunction(All &all)
         all.game.round = 1;
         all.game.round_txt.setString("ROUND : 0");
     }
-    all.menus.menusList.at(pauseMenu).actionButtonsList.at(3).button_text.setString(std::to_string(all.game.score));
+    all.menus.menusList.at(pauseMenu).buttonsList.at(1).button_text.setString(std::to_string(all.game.score));
     all.screen_id = playScreen;
 }
 
@@ -51,7 +51,7 @@ void masterVolumeUp(All &all)
 {
     if (all.settings.masterVolume != 100) {
         all.settings.masterVolume += 10;
-        all.menus.menusList.at(1).actionButtonsList.at(2).button_text.setString(std::to_string(all.settings.masterVolume));
+        all.menus.menusList.at(settingsFirstMenu).buttonsList.at(1).button_text.setString(std::to_string(all.settings.masterVolume));
     }
 }
 
@@ -59,7 +59,7 @@ void masterVolumeDown(All &all)
 {
     if (all.settings.masterVolume != 0) {
         all.settings.masterVolume -= 10;
-        all.menus.menusList.at(1).actionButtonsList.at(2).button_text.setString(std::to_string(all.settings.masterVolume));
+        all.menus.menusList.at(settingsFirstMenu).buttonsList.at(1).button_text.setString(std::to_string(all.settings.masterVolume));
     }
 }
 
@@ -67,7 +67,7 @@ void musicVolumeUp(All &all)
 {
     if (all.settings.musicVolume != 100) {
         all.settings.musicVolume += 10;
-        all.menus.menusList.at(1).actionButtonsList.at(6).button_text.setString(std::to_string(all.settings.musicVolume));
+        all.menus.menusList.at(settingsFirstMenu).buttonsList.at(3).button_text.setString(std::to_string(all.settings.musicVolume));
     }
 }
 
@@ -75,7 +75,7 @@ void musicVolumeDown(All &all)
 {
     if (all.settings.musicVolume != 0) {
         all.settings.musicVolume -= 10;
-        all.menus.menusList.at(1).actionButtonsList.at(6).button_text.setString(std::to_string(all.settings.musicVolume));
+        all.menus.menusList.at(settingsFirstMenu).buttonsList.at(3).button_text.setString(std::to_string(all.settings.musicVolume));
     }
 }
 
@@ -83,7 +83,7 @@ void soundVolumeUp(All &all)
 {
     if (all.settings.soundVolume != 100) {
         all.settings.soundVolume += 10;
-        all.menus.menusList.at(1).actionButtonsList.at(10).button_text.setString(std::to_string(all.settings.soundVolume));
+        all.menus.menusList.at(settingsFirstMenu).buttonsList.at(5).button_text.setString(std::to_string(all.settings.soundVolume));
     }
 }
 
@@ -91,7 +91,7 @@ void soundVolumeDown(All &all)
 {
     if (all.settings.soundVolume != 0) {
         all.settings.soundVolume -= 10;
-        all.menus.menusList.at(1).actionButtonsList.at(10).button_text.setString(std::to_string(all.settings.soundVolume));
+        all.menus.menusList.at(settingsFirstMenu).buttonsList.at(5).button_text.setString(std::to_string(all.settings.soundVolume));
     }
 }
 

@@ -83,6 +83,11 @@ void Menu::updateMenus(Colors colors)
             continue;
         button.isHover(colors, window);
     }
+    for (Buttons &button : buttonsList) {
+        if (button.state == mouseClicked)
+            continue;
+        button.isHover(colors, window);
+    }
 }
 
 void Menu::displayMenus(void)
@@ -90,5 +95,7 @@ void Menu::displayMenus(void)
     for (toggledButtons &button : toggledButtonsList)
         button.displayButtons(window);
     for (actionButtons &button : actionButtonsList)
+        button.displayButtons(window);
+    for (Buttons &button : buttonsList)
         button.displayButtons(window);
 }

@@ -121,8 +121,8 @@ void Game::appelEating(All &all)
         }
         score = score + 1 + round;
         score_txt.setString("SCORE : " + std::to_string(score));
-        all.menus.menusList.at(pauseMenu).actionButtonsList.at(3).button_text.setString(std::to_string(all.game.score));
-        all.menus.menusList.at(deadMenu).actionButtonsList.at(3).button_text.setString(std::to_string(all.game.score));
+        all.menus.menusList.at(pauseMenu).buttonsList.at(1).button_text.setString(std::to_string(all.game.score));
+        all.menus.menusList.at(deadMenu).buttonsList.at(1).button_text.setString(std::to_string(all.game.score));
         all.assets.sounds.at(SOUND_APPLE).sound.play();
         snake.addBody(all.colors.snakeBody);
     }

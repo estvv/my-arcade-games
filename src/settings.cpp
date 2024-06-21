@@ -8,4 +8,5 @@ Settings::Settings(void) :
     masterVolume(50),
     musicVolume(50),
     soundVolume(50)
-{}
+{
+}

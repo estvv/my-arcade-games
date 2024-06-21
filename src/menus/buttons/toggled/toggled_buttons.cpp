@@ -5,9 +5,9 @@
 toggledButtons::toggledButtons(All &all, const std::string &txt, sf::Vector2f size, sf::Vector2f new_pos, toggledButtonFunc clickedFunction, toggledButtonFunc inputKeyFunction, sf::Color background) :
     clickedFunction(clickedFunction),
     inputKeyFunction(inputKeyFunction),
-    mouseHoverSound(all.assets.sounds.at(SOUND_HOVER)),
-    mouseInputSound(all.assets.sounds.at(SOUND_INPUT)),
-    mouseClickSound(all.assets.sounds.at(SOUND_CLICK)),
+    mouseHoverSound(&all.assets.sounds.at(SOUND_HOVER)),
+    mouseInputSound(&all.assets.sounds.at(SOUND_INPUT)),
+    mouseClickSound(&all.assets.sounds.at(SOUND_CLICK)),
     state(isNone)
 {
     button_rect = sf::RectangleShape(size);
@@ -32,7 +32,7 @@ void toggledButtons::isHover(Colors colors, sf::RenderWindow &window)
     rect_pos = button_rect.getGlobalBounds();
     if (rect_pos.contains(mouse_pos.x, mouse_pos.y)) {
         if (state != mouseHover)
-            mouseHoverSound.sound.play();
+            mouseHoverSound->sound.play();
         if (button_text.getString().getSize() != 0)
             button_rect.setFillColor(colors.buttonHover);
         state = mouseHover;
@@ -46,7 +46,7 @@ void toggledButtons::isHover(Colors colors, sf::RenderWindow &window)
 void toggledButtons::isClicked(Colors colors)
 {
     if (state == mouseHover) {
-        mouseClickSound.sound.play();
+        mouseClickSound->sound.play();
         if (button_text.getString().getSize() != 0)
             button_rect.setFillColor(colors.buttonClicked);
         state = mouseClicked;

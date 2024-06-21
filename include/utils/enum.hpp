@@ -1,5 +1,6 @@
 #ifndef ENUM_HPP_
     #define ENUM_HPP_
+    #define UN __attribute__((unused))
     #define SOUND_CLICK 0
     #define SOUND_HOVER 1
     #define SOUND_INPUT 2

@@ -2,7 +2,7 @@
 #include "all.hpp"
 
 Buttons::Buttons(All &all, const std::string &txt, sf::Vector2f size, sf::Vector2f new_pos) :
-    mouseHoverSound(all.assets.sounds.at(SOUND_HOVER)),
+    mouseHoverSound(&all.assets.sounds.at(SOUND_HOVER)),
     state(isNone)
 {
     button_rect = sf::RectangleShape(size);
@@ -27,7 +27,7 @@ void Buttons::isHover(Colors colors, sf::RenderWindow &window)
     rect_pos = button_rect.getGlobalBounds();
     if (rect_pos.contains(mouse_pos.x, mouse_pos.y)) {
         if (state != mouseHover)
-            mouseHoverSound.sound.play();
+            mouseHoverSound->sound.play();
         if (button_text.getString().getSize() != 0)
             button_rect.setFillColor(colors.buttonHover);
         state = mouseHover;

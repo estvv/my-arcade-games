@@ -4,12 +4,13 @@
     #include <SFML/Window.hpp>
     #include <SFML/System.hpp>
     #include <SFML/Audio.hpp>
+    #include <memory>
 
 class Music {
     public:
         Music(const std::string &filepath);
 
-        sf::Music music;
+        std::shared_ptr<sf::Music> music;
     private:
 };
 

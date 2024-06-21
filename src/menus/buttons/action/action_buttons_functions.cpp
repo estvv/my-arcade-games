@@ -5,7 +5,7 @@ void goToMainMenu(All &all)
     all.screen_id = mainMenu;
 }
 
-void playButtonFunction(All &all)
+void goToPlay(All &all)
 {
     if (all.screen_id != pauseMenu) {
         all.game.snake.head->rect.setPosition(sf::Vector2f(400, 400));
@@ -32,17 +32,17 @@ void goToSecondSettingsMenu(All &all)
     all.screen_id = settingsSecondMenu;
 }
 
-void leaderButtonFunction(All &all)
+void goToLeaderboard(All &all)
 {
     all.screen_id = leaderboardMenu;
 }
 
-void helpButtonFunction(All &all)
+void goToHelp(All &all)
 {
     all.screen_id = helpMenu;
 }
 
-void exitButtonFunction(All &all)
+void goToExit(All &all)
 {
     all.window.close();
 }
@@ -68,6 +68,8 @@ void musicVolumeUp(All &all)
     if (all.settings.musicVolume != 100) {
         all.settings.musicVolume += 10;
         all.menus.menusList.at(settingsFirstMenu).buttonsList.at(3).button_text.setString(std::to_string(all.settings.musicVolume));
+        for (Music &music : all.assets.musics)
+            music.music->setVolume(all.settings.musicVolume);
     }
 }
 
@@ -76,6 +78,8 @@ void musicVolumeDown(All &all)
     if (all.settings.musicVolume != 0) {
         all.settings.musicVolume -= 10;
         all.menus.menusList.at(settingsFirstMenu).buttonsList.at(3).button_text.setString(std::to_string(all.settings.musicVolume));
+        for (Music &music : all.assets.musics)
+            music.music->setVolume(all.settings.musicVolume);
     }
 }
 
@@ -84,6 +88,8 @@ void soundVolumeUp(All &all)
     if (all.settings.soundVolume != 100) {
         all.settings.soundVolume += 10;
         all.menus.menusList.at(settingsFirstMenu).buttonsList.at(5).button_text.setString(std::to_string(all.settings.soundVolume));
+        for (Sound &sound : all.assets.sounds)
+            sound.sound.setVolume(all.settings.soundVolume);
     }
 }
 
@@ -92,10 +98,7 @@ void soundVolumeDown(All &all)
     if (all.settings.soundVolume != 0) {
         all.settings.soundVolume -= 10;
         all.menus.menusList.at(settingsFirstMenu).buttonsList.at(5).button_text.setString(std::to_string(all.settings.soundVolume));
+        for (Sound &sound : all.assets.sounds)
+            sound.sound.setVolume(all.settings.soundVolume);
     }
-}
-
-void noneAction(UN All &all)
-{
-    return;
 }

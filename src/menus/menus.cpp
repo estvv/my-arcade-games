@@ -21,11 +21,11 @@ Menus::Menus(All *all, sf::RenderWindow &window)
 
 void Menus::initMain(All &all)
 {
-    menusList.at(mainMenu).actionButtonsList.push_back(actionButtons(all, "PLAY", sf::Vector2f(400, 50), sf::Vector2f(200, 300), playButtonFunction));
+    menusList.at(mainMenu).actionButtonsList.push_back(actionButtons(all, "PLAY", sf::Vector2f(400, 50), sf::Vector2f(200, 300), goToPlay));
     menusList.at(mainMenu).actionButtonsList.push_back(actionButtons(all, "SETTINGS", sf::Vector2f(400, 50), sf::Vector2f(200, 400), goToFirstSettingsMenu));
-    menusList.at(mainMenu).actionButtonsList.push_back(actionButtons(all, "LEADERBOARD", sf::Vector2f(400, 50), sf::Vector2f(200, 500), leaderButtonFunction));
-    menusList.at(mainMenu).actionButtonsList.push_back(actionButtons(all, "HELP", sf::Vector2f(400, 50), sf::Vector2f(200, 600), helpButtonFunction));
-    menusList.at(mainMenu).actionButtonsList.push_back(actionButtons(all, "EXIT", sf::Vector2f(400, 50), sf::Vector2f(200, 700), exitButtonFunction));
+    menusList.at(mainMenu).actionButtonsList.push_back(actionButtons(all, "LEADERBOARD", sf::Vector2f(400, 50), sf::Vector2f(200, 500), goToLeaderboard));
+    menusList.at(mainMenu).actionButtonsList.push_back(actionButtons(all, "HELP", sf::Vector2f(400, 50), sf::Vector2f(200, 600), goToHelp));
+    menusList.at(mainMenu).actionButtonsList.push_back(actionButtons(all, "EXIT", sf::Vector2f(400, 50), sf::Vector2f(200, 700), goToExit));
     menusList.at(mainMenu).actionButtonsList.at(4).button_text.setFillColor(sf::Color(200, 0, 0));
 }
 
@@ -98,7 +98,7 @@ void Menus::initLeaderboard(All &all)
 
 void Menus::initDead(All &all)
 {
-    menusList.at(deadMenu).actionButtonsList.push_back(actionButtons(all, "RETRY", sf::Vector2f(400, 50), sf::Vector2f(200, 300), playButtonFunction));
+    menusList.at(deadMenu).actionButtonsList.push_back(actionButtons(all, "RETRY", sf::Vector2f(400, 50), sf::Vector2f(200, 300), goToPlay));
     menusList.at(deadMenu).actionButtonsList.push_back(actionButtons(all, "MENU", sf::Vector2f(400, 50), sf::Vector2f(200, 400), goToMainMenu));
     menusList.at(deadMenu).buttonsList.push_back(Buttons(all, "SCORE :", sf::Vector2f(200, 50), sf::Vector2f(200, 500)));
     menusList.at(deadMenu).buttonsList.push_back(Buttons(all, "0", sf::Vector2f(150, 50), sf::Vector2f(450, 500)));
@@ -108,7 +108,7 @@ void Menus::initDead(All &all)
 
 void Menus::initPause(All &all)
 {
-    menusList.at(pauseMenu).actionButtonsList.push_back(actionButtons(all, "CONTINUE", sf::Vector2f(400, 50), sf::Vector2f(200, 300), playButtonFunction));
+    menusList.at(pauseMenu).actionButtonsList.push_back(actionButtons(all, "CONTINUE", sf::Vector2f(400, 50), sf::Vector2f(200, 300), goToPlay));
     menusList.at(pauseMenu).actionButtonsList.push_back(actionButtons(all, "MENU", sf::Vector2f(400, 50), sf::Vector2f(200, 400), goToMainMenu));
     menusList.at(pauseMenu).buttonsList.push_back(Buttons(all, "SCORE :", sf::Vector2f(200, 50), sf::Vector2f(200, 500)));
     menusList.at(pauseMenu).buttonsList.push_back(Buttons(all, "0", sf::Vector2f(150, 50), sf::Vector2f(450, 500)));

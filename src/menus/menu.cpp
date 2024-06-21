@@ -66,7 +66,7 @@ void Menu::inputKey(All &all)
     for (toggledButtons &button : toggledButtonsList) {
         if (button.state == mouseClicked) {
             button.inputKeyFunction(all, button);
-            button.mouseInputSound.sound.play();
+            button.mouseInputSound->sound.play();
         }
     }
 }

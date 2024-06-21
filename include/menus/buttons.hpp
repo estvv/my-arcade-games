@@ -11,17 +11,17 @@
 class Assets;
 class All;
 class toggledButtons;
+
 typedef void (*actionButtonFunc)(All &);
 typedef void (*toggledButtonFunc)(All &, toggledButtons &);
 
-void noneAction(All &all);
 void goToMainMenu(All &all);
-void playButtonFunction(All &all);
+void goToPlay(All &all);
 void goToFirstSettingsMenu(All &all);
 void goToSecondSettingsMenu(All &all);
-void leaderButtonFunction(All &all);
-void helpButtonFunction(All &all);
-void exitButtonFunction(All &all);
+void goToLeaderboard(All &all);
+void goToHelp(All &all);
+void goToExit(All &all);
 void masterVolumeUp(All &all);
 void masterVolumeDown(All &all);
 void soundVolumeUp(All &all);
@@ -29,12 +29,12 @@ void soundVolumeDown(All &all);
 void musicVolumeUp(All &all);
 void musicVolumeDown(All &all);
 
-void noneToggled(All &all, toggledButtons &button);
+void noneToggled(UN All &all, UN toggledButtons &button);
 void resetTheme(All &all, toggledButtons &button);
 void setLightBlueTheme(All &all, toggledButtons &button);
 void setPinkTheme(All &all, toggledButtons &button);
 void setRedAndYellowTheme(All &all, toggledButtons &button);
-void setRainbowTheme(All &all, toggledButtons &button);
+void setRainbowTheme(All &all, UN toggledButtons &button);
 
 void upInputKey(All &all, toggledButtons &button);
 void downInputKey(All &all, toggledButtons &button);
@@ -54,9 +54,9 @@ class toggledButtons {
         sf::Text button_text;
         toggledButtonFunc clickedFunction;
         toggledButtonFunc inputKeyFunction;
-        Sound mouseHoverSound;
-        Sound mouseInputSound;
-        Sound mouseClickSound;
+        Sound *mouseHoverSound;
+        Sound *mouseInputSound;
+        Sound *mouseClickSound;
         buttonState state;
     private:
 };
@@ -72,8 +72,8 @@ class actionButtons {
         sf::RectangleShape button_rect;
         sf::Text button_text;
         actionButtonFunc func;
-        Sound mouseHoverSound;
-        Sound mouseClickSound;
+        Sound *mouseHoverSound;
+        Sound *mouseClickSound;
         buttonState state;
     private:
 };
@@ -86,7 +86,7 @@ class Buttons {
 
         sf::RectangleShape button_rect;
         sf::Text button_text;
-        Sound mouseHoverSound;
+        Sound *mouseHoverSound;
         buttonState state;
     private:
 };

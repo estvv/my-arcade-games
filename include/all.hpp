@@ -1,6 +1,5 @@
 #ifndef ALL_HPP_
     #define ALL_HPP_
-    #define UN __attribute__((unused))
     #include <SFML/Graphics.hpp>
     #include <SFML/Window.hpp>
     #include <SFML/System.hpp>

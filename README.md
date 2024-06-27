@@ -1,11 +1,11 @@
-# my Snake 🐍
-Here is my version of the famous Snake game.
+# my Games
+Here is my version of famous arcades games (Snake, Breakout, Bubble Shooter...).
 
 ## USAGE
-    [USAGE]   : ./my_snake
+    [USAGE]   : ./my_games
 
 ## FUNCTIONALITIES
-In this game, you will be able to :
+In these games, you will be able to :
 -  Edit your keys.
 -  Edit the intensity of the master volume, sounds and musics.
 -  Choose your theme for the game.

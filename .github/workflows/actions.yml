@@ -9,7 +9,7 @@ on:
       - ga-ignore-;
 
 env:
-  EXECUTABLES: "my_snake"
+  EXECUTABLES: "my_games"
 
 jobs:
   check_program_compilation:

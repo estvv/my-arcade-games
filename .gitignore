@@ -1,5 +1,5 @@
 .vscode
-my_snake
+my_games
 *.o
 vgcore.*
 build

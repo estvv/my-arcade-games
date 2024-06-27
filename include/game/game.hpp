@@ -8,6 +8,7 @@
     #include "enum.hpp"
     #include "manage_breakout.hpp"
     #include "manage_snake.hpp"
+    #include "manage_bubble_shooter.hpp"
 
 class Game {
     public:
@@ -19,6 +20,7 @@ class Game {
 
         SnakeGame snakeGame;
         BreakoutGame breakoutGame;
+        BubbleShooterGame bubbleShooterGame; 
         sf::RenderWindow &window;
         sf::Clock clock;
         sf::RectangleShape arena;

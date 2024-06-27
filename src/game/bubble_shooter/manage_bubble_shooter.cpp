@@ -32,12 +32,12 @@ void BubbleShooterGame::gameDisplay(UN sf::RenderWindow &window)
     return;
 }
 
-void BubbleShooterGame::updateBreakoutColors(UN Colors colors)
+void BubbleShooterGame::updateBubbleShooterColors(UN Colors colors)
 {
     return;
 }
 
-void BubbleShooterGame::initBreakout(void)
+void BubbleShooterGame::initBubbleShooter(void)
 {
     return;
 }

@@ -14,8 +14,8 @@ class BubbleShooterGame {
         void gameEvent(All &all);
         void gameUpdate(All &all);
         void gameDisplay(sf::RenderWindow &window);
-        void updateBreakoutColors(Colors colors);
-        void initBreakout(void);
+        void updateBubbleShooterColors(Colors colors);
+        void initBubbleShooter(void);
 
     private:
 };

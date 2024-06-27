@@ -24,7 +24,7 @@ void All::updateThemeColors(void)
 void All::manageScreens(void)
 {
     window.clear(colors.menusColors.mainColor);
-    if (screen_id == snakePlayScreen or screen_id == breakoutPlayScreen) {
+    if (screen_id == snakePlayScreen or screen_id == breakoutPlayScreen or screen_id == bubbleShooterPlayScreen) {
         game.gamesEvents(*this);
         game.gamesUpdates(*this);
         game.gamesDisplay();

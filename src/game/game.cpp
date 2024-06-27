@@ -36,6 +36,8 @@ void Game::gamesEvents(All &all)
         snakeGame.gameEvent(all);
     if (gameState == breakout)
         breakoutGame.gameEvent(all);
+    if (gameState == bubbleShooter)
+        bubbleShooterGame.gameEvent(all);
 }
 
 // Game update
@@ -45,6 +47,8 @@ void Game::gamesUpdates(All &all)
         snakeGame.gameUpdate(all);
     if (gameState == breakout)
         breakoutGame.gameUpdate(all);
+    if (gameState == bubbleShooter)
+        bubbleShooterGame.gameUpdate(all);
 }
 
 // Display game
@@ -57,4 +61,6 @@ void Game::gamesDisplay()
         snakeGame.gameDisplay(window);
     if (gameState == breakout)
         breakoutGame.gameDisplay(window);
+    if (gameState == bubbleShooter)
+        bubbleShooterGame.gameDisplay(window);
 }

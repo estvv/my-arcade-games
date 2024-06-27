@@ -1,5 +1,5 @@
-# my Games
-Here is my version of famous arcades games (Snake, Breakout, Bubble Shooter...).
+# my Arcade Games
+Here is my version of famous arcade games (Snake, Breakout, Bubble Shooter...).
 
 ## USAGE
     [USAGE]   : ./my_games

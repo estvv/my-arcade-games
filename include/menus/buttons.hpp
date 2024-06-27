@@ -15,12 +15,18 @@ class toggledButtons;
 typedef void (*actionButtonFunc)(All &);
 typedef void (*toggledButtonFunc)(All &, toggledButtons &);
 
+void noneAction(UN All &all);
 void goToMainMenu(All &all);
-void goToPlay(All &all);
+void goToChoosingSnakeGameMenu(All &all);
+void goToChoosingBreakoutGameMenu(All &all);
+void goToChoosingBubbleShooterGameMenu(All &all);
+void goToSnakeGameScreen(All &all);
+void goToBreakoutGameScreen(All &all);
+void goToBubbleShooterGameScreen(All &all);
 void goToFirstSettingsMenu(All &all);
 void goToSecondSettingsMenu(All &all);
-void goToLeaderboard(All &all);
-void goToHelp(All &all);
+void goToLeaderboardMenu(All &all);
+void goToHelpMenu(All &all);
 void goToExit(All &all);
 void masterVolumeUp(All &all);
 void masterVolumeDown(All &all);
@@ -45,8 +51,8 @@ class toggledButtons {
     public:
         toggledButtons(All &all, const std::string &txt, sf::Vector2f size, sf::Vector2f new_pos, toggledButtonFunc clickedFunction, toggledButtonFunc inputKeyFunction, sf::Color background);
         void displayButtons(sf::RenderWindow &window);
-        void isHover(Colors colors, sf::RenderWindow &window);
-        void isClicked(Colors colors);
+        void isHover(MenusColors menusColors, sf::RenderWindow &window);
+        void isClicked(MenusColors menusColors);
         void onClick(All *all);
         void onInputKey(All *all);
 
@@ -65,8 +71,8 @@ class actionButtons {
     public:
         actionButtons(All &all, const std::string &txt, sf::Vector2f size, sf::Vector2f new_pos, actionButtonFunc func);
         void displayButtons(sf::RenderWindow &window);
-        void isHover(Colors colors, sf::RenderWindow &window);
-        void isClicked(Colors colors);
+        void isHover(MenusColors menusColors, sf::RenderWindow &window);
+        void isClicked(MenusColors menusColors);
         void onClick(All *all);
 
         sf::RectangleShape button_rect;
@@ -81,7 +87,7 @@ class actionButtons {
 class Buttons {
     public:
         Buttons(All &all, const std::string &txt, sf::Vector2f size, sf::Vector2f new_pos);
-        void isHover(Colors colors, sf::RenderWindow &window);
+        void isHover(MenusColors menusColors, sf::RenderWindow &window);
         void displayButtons(sf::RenderWindow &window);
 
         sf::RectangleShape button_rect;

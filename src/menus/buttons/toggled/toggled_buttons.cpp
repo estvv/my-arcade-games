@@ -13,7 +13,7 @@ toggledButtons::toggledButtons(All &all, const std::string &txt, sf::Vector2f si
     button_rect = sf::RectangleShape(size);
     button_rect.setOutlineThickness(2);
     button_rect.setFillColor(background);
-    button_rect.setOutlineColor(all.colors.button);
+    button_rect.setOutlineColor(all.colors.menusColors.button);
     button_rect.setPosition(new_pos);
     button_text.setString(txt);
     button_text.setCharacterSize(30);
@@ -24,7 +24,7 @@ toggledButtons::toggledButtons(All &all, const std::string &txt, sf::Vector2f si
     button_text.setFont(all.assets.fonts.at(0).font);
 }
 
-void toggledButtons::isHover(Colors colors, sf::RenderWindow &window)
+void toggledButtons::isHover(MenusColors menusColors, sf::RenderWindow &window)
 {
     sf::Vector2i mouse_pos = sf::Mouse::getPosition(window);
     sf::FloatRect rect_pos;
@@ -34,25 +34,25 @@ void toggledButtons::isHover(Colors colors, sf::RenderWindow &window)
         if (state != mouseHover)
             mouseHoverSound->sound.play();
         if (button_text.getString().getSize() != 0)
-            button_rect.setFillColor(colors.buttonHover);
+            button_rect.setFillColor(menusColors.buttonHover);
         state = mouseHover;
     } else {
         if (button_text.getString().getSize() != 0)
-            button_rect.setFillColor(colors.mainColor);
+            button_rect.setFillColor(menusColors.mainColor);
         state = isNone;
     }
 }
 
-void toggledButtons::isClicked(Colors colors)
+void toggledButtons::isClicked(MenusColors menusColors)
 {
     if (state == mouseHover) {
         mouseClickSound->sound.play();
         if (button_text.getString().getSize() != 0)
-            button_rect.setFillColor(colors.buttonClicked);
+            button_rect.setFillColor(menusColors.buttonClicked);
         state = mouseClicked;
     } else {
         if (button_text.getString().getSize() != 0)
-            button_rect.setFillColor(colors.mainColor);
+            button_rect.setFillColor(menusColors.mainColor);
         state = isNone;
     }
 }

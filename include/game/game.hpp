@@ -1,35 +1,32 @@
 #ifndef EXAMPLE_HPP
     #define EXAMPLE_HPP
-    #include "snake.hpp"
-    #include "apple.hpp"
-    #include "enum.hpp"
-    #include "colors.hpp"
-    #include <iostream>
     #include <SFML/Graphics.hpp>
     #include <SFML/Window.hpp>
     #include <SFML/System.hpp>
     #include <SFML/Audio.hpp>
+    #include <iostream>
+    #include "enum.hpp"
+    #include "manage_breakout.hpp"
+    #include "manage_snake.hpp"
 
-class All;
 class Game {
     public:
         Game(All *all, Colors colors, sf::RenderWindow &window);
-        void displayGame(void);
-        void manageGameEvent(All &all);
-        void update(All &all);
-        void endOfGame(All &all);
-        void appelEating(All &all);
-        void mooveSnake(void);
+        void gamesDisplay(void);
+        void gamesUpdates(All &all);
+        void gamesEvents(All &all);
+        void updateGameColors(MenusColors menusColors);
 
-        Snake snake;
-        Apple apple;
+        SnakeGame snakeGame;
+        BreakoutGame breakoutGame;
         sf::RenderWindow &window;
         sf::Clock clock;
         sf::RectangleShape arena;
-        sf::Text score_txt;
-        sf::Text round_txt;
+        sf::Text scoreText;
+        sf::Text roundText;
         unsigned int score;
         unsigned int round;
+        enum game gameState;
     private:
 };
 

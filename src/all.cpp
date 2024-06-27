@@ -16,41 +16,18 @@ All::All(void) :
 
 void All::updateThemeColors(void)
 {
-    Node *node = game.snake.head->next;
-
-    for (Menu &menu : menus.menusList) {
-        for (actionButtons &button : menu.actionButtonsList) {
-            button.button_rect.setOutlineColor(colors.button);
-            button.button_text.setFillColor(colors.buttonText);
-        }
-        for (toggledButtons &button : menu.toggledButtonsList) {
-            button.button_rect.setOutlineColor(colors.button);
-            button.button_text.setFillColor(colors.buttonText);
-        }
-        for (Buttons &button : menu.buttonsList) {
-            button.button_rect.setOutlineColor(colors.button);
-            button.button_text.setFillColor(colors.buttonText);
-        }
-    }
-    game.apple.apple.setFillColor(colors.apple);
-    game.snake.head->rect.setFillColor(colors.snakeHead);
-    while (node) {
-        node->rect.setFillColor(colors.snakeBody);
-        node = node->next;
-    }
-    game.arena.setFillColor(colors.mainColor);
-    game.arena.setOutlineColor(colors.button);
-    game.round_txt.setFillColor(colors.buttonText);
-    game.score_txt.setFillColor(colors.buttonText);
+    menus.updateMenusColors(colors.menusColors);
+    game.updateGameColors(colors.menusColors);
+    game.snakeGame.updateSnakeColors(colors.snakeColors);
 }
 
-void All::manageWindow(void)
+void All::manageScreens(void)
 {
-    window.clear(colors.mainColor);
-    if (screen_id == playScreen) {
-        game.manageGameEvent(*this);
-        game.update(*this);
-        game.displayGame();
+    window.clear(colors.menusColors.mainColor);
+    if (screen_id == snakePlayScreen or screen_id == breakoutPlayScreen) {
+        game.gamesEvents(*this);
+        game.gamesUpdates(*this);
+        game.gamesDisplay();
     } else {
         menus.menusList.at(screen_id).updateMenus(colors);
         menus.menusList.at(screen_id).displayMenus();
@@ -60,8 +37,8 @@ void All::manageWindow(void)
     window.display();
 }
 
-void All::loop(void)
+void All::gameLoop(void)
 {
     while (window.isOpen())
-        manageWindow();
+        manageScreens();
 }

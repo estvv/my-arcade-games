@@ -36,6 +36,8 @@ class Menus {
         void initDead(All &all);
         void initPause(All &all);
         void initHelp(All &all);
+        void initChoosingGame(All &all);
+        void updateMenusColors(MenusColors menusColors);
 
         std::vector<Menu> menusList;
     private:

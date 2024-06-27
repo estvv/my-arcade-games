@@ -14,8 +14,8 @@
 class All {
     public:
         All(void);
-        void loop(void);
-        void manageWindow(void);
+        void gameLoop(void);
+        void manageScreens(void);
         void updateThemeColors(void);
 
         Colors colors;

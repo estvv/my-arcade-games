@@ -6,6 +6,6 @@ int main(int ac, UN char **av)
 
     if (ac != 1)
         return 84;
-    all.loop();
+    all.gameLoop();
     return 0;
 }

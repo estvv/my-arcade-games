@@ -5,21 +5,65 @@ void goToMainMenu(All &all)
     all.screen_id = mainMenu;
 }
 
-void goToPlay(All &all)
+void goToSnakeGameScreen(All &all)
 {
     if (all.screen_id != pauseMenu) {
-        all.game.snake.head->rect.setPosition(sf::Vector2f(400, 400));
-        all.game.snake.head->next = nullptr;
-        srand(time(NULL));
-        all.game.apple.apple.setPosition(20 * (rand() % 40), 20 * (rand() % 38) + 40);
-        all.game.snake.head->moove = SOUTH;
         all.game.score = 0;
-        all.game.score_txt.setString("SCORE : 0");
+        all.game.scoreText.setString("SCORE : 0");
         all.game.round = 1;
-        all.game.round_txt.setString("ROUND : 0");
+        all.game.roundText.setString("ROUND : 0");
+        all.game.snakeGame.initSnake();
+        all.menus.menusList.at(pauseMenu).actionButtonsList.at(0).func = [](All &all) {goToSnakeGameScreen(all);};
+        all.menus.menusList.at(deadMenu).actionButtonsList.at(0).func = [](All &all) {goToSnakeGameScreen(all);};
     }
     all.menus.menusList.at(pauseMenu).buttonsList.at(1).button_text.setString(std::to_string(all.game.score));
-    all.screen_id = playScreen;
+    all.screen_id = snakePlayScreen;
+    all.game.gameState = snake;
+}
+
+void goToBreakoutGameScreen(All &all)
+{
+    if (all.screen_id != pauseMenu) {
+        all.game.score = 0;
+        all.game.scoreText.setString("SCORE : 0");
+        all.game.round = 1;
+        all.game.roundText.setString("ROUND : 0");
+        all.menus.menusList.at(pauseMenu).actionButtonsList.at(0).func = [](All &all) {goToBreakoutGameScreen(all);};
+        all.menus.menusList.at(deadMenu).actionButtonsList.at(0).func = [](All &all) {goToBreakoutGameScreen(all);};
+    }
+    all.menus.menusList.at(pauseMenu).buttonsList.at(1).button_text.setString(std::to_string(all.game.score));
+    all.screen_id = breakoutPlayScreen;
+    all.game.gameState = breakout;
+}
+
+void goToBubbleShooterGameScreen(All &all)
+{
+    if (all.screen_id != pauseMenu) {
+        all.game.score = 0;
+        all.game.scoreText.setString("SCORE : 0");
+        all.game.round = 1;
+        all.game.roundText.setString("ROUND : 0");
+        all.menus.menusList.at(pauseMenu).actionButtonsList.at(0).func = [](All &all) {goToBubbleShooterGameScreen(all);};
+        all.menus.menusList.at(deadMenu).actionButtonsList.at(0).func = [](All &all) {goToBubbleShooterGameScreen(all);};
+    }
+    all.menus.menusList.at(pauseMenu).buttonsList.at(1).button_text.setString(std::to_string(all.game.score));
+    all.screen_id = bubbleShooterPlayScreen;
+    all.game.gameState = bubbleShooter;
+}
+
+void goToChoosingBubbleShooterGameMenu(All &all)
+{
+    all.screen_id = choosingBubbleShooterGameMenu;
+}
+
+void goToChoosingSnakeGameMenu(All &all)
+{
+    all.screen_id = choosingSnakeGameMenu;
+}
+
+void goToChoosingBreakoutGameMenu(All &all)
+{
+    all.screen_id = choosingBreakoutGameMenu;
 }
 
 void goToFirstSettingsMenu(All &all)
@@ -32,12 +76,12 @@ void goToSecondSettingsMenu(All &all)
     all.screen_id = settingsSecondMenu;
 }
 
-void goToLeaderboard(All &all)
+void goToLeaderboardMenu(All &all)
 {
     all.screen_id = leaderboardMenu;
 }
 
-void goToHelp(All &all)
+void goToHelpMenu(All &all)
 {
     all.screen_id = helpMenu;
 }
@@ -101,4 +145,9 @@ void soundVolumeDown(All &all)
         for (Sound &sound : all.assets.sounds)
             sound.sound.setVolume(all.settings.soundVolume);
     }
+}
+
+void noneAction(UN All &all)
+{
+    return;
 }

@@ -5,18 +5,41 @@
     #include <SFML/System.hpp>
     #include <SFML/Audio.hpp>
 
-class Colors {
+class SnakeColors {
     public:
-        Colors(void);
+        SnakeColors(void);
+
+        sf::Color snakeHead;
+        sf::Color snakeBody;
+        sf::Color apple;
+    private:
+};
+
+class BreakoutColors {
+    public:
+        BreakoutColors(void);
+    private:
+};
+
+class MenusColors {
+    public:
+        MenusColors(void);
 
         sf::Color mainColor;
         sf::Color button;
         sf::Color buttonText;
         sf::Color buttonHover;
         sf::Color buttonClicked;
-        sf::Color snakeHead;
-        sf::Color snakeBody;
-        sf::Color apple;
+    private:
+};
+
+class Colors {
+    public:
+        Colors(void);
+
+        MenusColors menusColors;
+        SnakeColors snakeColors;
+        BreakoutColors breakoutColors;
     private:
 };
 

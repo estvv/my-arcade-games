@@ -18,7 +18,7 @@ Snake::Snake(sf::Color snakeHeadColor) : head(nullptr)
 }
 
 // Insert a node in the filepathed list
-void Snake::InsertNode(sf::Vector2f pos, sf::Color snakeBodyColor)
+void Snake::insertNode(sf::Vector2f pos, sf::Color snakeBodyColor)
 {
     Node *curr = head;
 
@@ -40,7 +40,7 @@ void Snake::addBody(sf::Color snakeBodyColor)
         if (head->moove == NORTH) new_coords.y += 20;
         if (head->moove == EAST) new_coords.x -= 20;
         if (head->moove == WEST) new_coords.x += 20;
-        InsertNode(new_coords, snakeBodyColor);
+        insertNode(new_coords, snakeBodyColor);
     } else {
         while (curr->next) curr = curr->next;
         new_coords = curr->prev->rect.getPosition();
@@ -48,7 +48,7 @@ void Snake::addBody(sf::Color snakeBodyColor)
         if (curr->prev->moove == NORTH) new_coords.y += 20;
         if (curr->prev->moove == EAST) new_coords.x -= 20;
         if (curr->prev->moove == WEST) new_coords.x += 20;
-        InsertNode(new_coords, snakeBodyColor);
+        insertNode(new_coords, snakeBodyColor);
     }
 }
 

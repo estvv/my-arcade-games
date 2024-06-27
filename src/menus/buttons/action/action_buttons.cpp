@@ -10,8 +10,8 @@ actionButtons::actionButtons(All &all, const std::string &txt, sf::Vector2f size
 {
     button_rect = sf::RectangleShape(size);
     button_rect.setOutlineThickness(2);
-    button_rect.setFillColor(all.colors.mainColor);
-    button_rect.setOutlineColor(all.colors.button);
+    button_rect.setFillColor(all.colors.menusColors.mainColor);
+    button_rect.setOutlineColor(all.colors.menusColors.button);
     button_rect.setPosition(new_pos);
     button_text.setString(txt);
     button_text.setCharacterSize(30);
@@ -22,7 +22,7 @@ actionButtons::actionButtons(All &all, const std::string &txt, sf::Vector2f size
     button_text.setFont(all.assets.fonts.at(0).font);
 }
 
-void actionButtons::isHover(Colors colors, sf::RenderWindow &window)
+void actionButtons::isHover(MenusColors menusColors, sf::RenderWindow &window)
 {
     sf::Vector2i mouse_pos = sf::Mouse::getPosition(window);
     sf::FloatRect rect_pos;
@@ -32,25 +32,25 @@ void actionButtons::isHover(Colors colors, sf::RenderWindow &window)
         if (state != mouseHover)
             mouseHoverSound->sound.play();
         if (button_text.getString().getSize() != 0)
-            button_rect.setFillColor(colors.buttonHover);
+            button_rect.setFillColor(menusColors.buttonHover);
         state = mouseHover;
     } else {
         if (button_text.getString().getSize() != 0)
-            button_rect.setFillColor(colors.mainColor);
+            button_rect.setFillColor(menusColors.mainColor);
         state = isNone;
     }
 }
 
-void actionButtons::isClicked(Colors colors)
+void actionButtons::isClicked(MenusColors menusColors)
 {
     if (state == mouseHover) {
         if (button_text.getString().getSize() != 0)
-            button_rect.setFillColor(colors.buttonClicked);
+            button_rect.setFillColor(menusColors.buttonClicked);
         state = mouseClicked;
         mouseClickSound->sound.play();
     } else {
         if (button_text.getString().getSize() != 0)
-            button_rect.setFillColor(colors.mainColor);
+            button_rect.setFillColor(menusColors.mainColor);
         state = isNone;
     }
 }

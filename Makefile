@@ -2,7 +2,7 @@
 CXX	=	g++
 
 # BINARY NAME
-BINARY		=	my_snake
+BINARY		=	my_games
 BINARY_TEST	=	unit_tests
 
 # DIRECTORIES

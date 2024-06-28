@@ -2,7 +2,7 @@
 Here is my version of famous arcade games (Snake, Breakout, Bubble Shooter...).
 
 ## USAGE
-    [USAGE]   : ./my_games
+    [USAGE]   : make re && ./my_games
 
 ## FUNCTIONALITIES
 In these games, you will be able to :

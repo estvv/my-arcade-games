@@ -1,7 +1,7 @@
 #ifndef ENUM_HPP_
     #define ENUM_HPP_
     #define UN __attribute__((unused))
-    #define screenCounter 12
+    #define screenCounter 14
     #define SOUND_CLICK 0
     #define SOUND_HOVER 1
     #define SOUND_INPUT 2
@@ -20,9 +20,11 @@ enum screens {
     choosingSnakeGameMenu,
     choosingBreakoutGameMenu,
     choosingBubbleShooterGameMenu,
+    choosingTetrisGameMenu,
     snakePlayScreen,
     breakoutPlayScreen,
-    bubbleShooterPlayScreen
+    bubbleShooterPlayScreen,
+    tetrisPlayScreen
 };
 
 enum buttonState {
@@ -35,7 +37,8 @@ enum buttonState {
 enum game {
     snake,
     breakout,
-    bubbleShooter
+    bubbleShooter,
+    tetris
 };
 
 #endif /* !ENUM_HPP_ */

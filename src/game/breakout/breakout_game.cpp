@@ -1,4 +1,4 @@
-#include "manage_breakout.hpp"
+#include "breakout_game.hpp"
 #include "colors.hpp"
 #include "all.hpp"
 #include <iostream>

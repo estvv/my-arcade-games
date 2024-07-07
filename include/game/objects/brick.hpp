@@ -7,8 +7,9 @@
 
 class Brick {
     public:
-        Brick(void);
+        Brick(sf::Color color, sf::Vector2f position, sf::Vector2f size);
 
+        sf::RectangleShape shape;
     private:
 };
 

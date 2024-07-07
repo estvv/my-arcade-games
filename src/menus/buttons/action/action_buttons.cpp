@@ -2,7 +2,9 @@
 #include "all.hpp"
 #include <iostream>
 
-actionButtons::actionButtons(All &all, const std::string &txt, sf::Vector2f size, sf::Vector2f new_pos, actionButtonFunc func) :
+using namespace std;
+
+actionButtons::actionButtons(All &all, const string &txt, sf::Vector2f size, sf::Vector2f new_pos, actionButtonFunc func) :
     func(func),
     mouseHoverSound(&all.assets.sounds.at(SOUND_HOVER)),
     mouseClickSound(&all.assets.sounds.at(SOUND_CLICK)),

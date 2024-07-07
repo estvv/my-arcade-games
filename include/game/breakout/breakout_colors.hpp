@@ -1,15 +1,14 @@
-#ifndef RACKET_HPP_
-    #define RACKET_HPP_
+#ifndef BREAKOUT_COLORS_HPP_
+    #define BREAKOUT_COLORS_HPP_
     #include <SFML/Graphics.hpp>
     #include <SFML/Window.hpp>
     #include <SFML/System.hpp>
     #include <SFML/Audio.hpp>
 
-class Racket {
+class BreakoutColors {
     public:
-        Racket(void);
-
+        BreakoutColors(void);
     private:
 };
 
-#endif /* !RACKET_HPP_ */
+#endif /* !BREAKOUT_COLORS_HPP_ */

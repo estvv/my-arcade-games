@@ -1,5 +1,7 @@
 #include "colors.hpp"
 
+using namespace std;
+
 Colors::Colors(void)
 {
 }
@@ -24,3 +26,22 @@ BreakoutColors::BreakoutColors(void)
 {
 }
 
+BubbleShooterColors::BubbleShooterColors(void)
+{
+}
+
+ObjectsColors::ObjectsColors(void)
+{
+    ballColors.push_back(sf::Color::Green);
+    ballColors.push_back(sf::Color::Yellow);
+    ballColors.push_back(sf::Color::Blue);
+    ballColors.push_back(sf::Color::Magenta);
+    ballColors.push_back(sf::Color::Red);
+    ballColors.push_back(sf::Color::Cyan);
+    srand(static_cast<unsigned>(time(0)));
+}
+
+sf::Color ObjectsColors::getRandomObjectColor(vector<sf::Color> objects)
+{
+    return objects[rand() % objects.size()];
+}

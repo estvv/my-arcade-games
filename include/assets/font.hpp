@@ -5,9 +5,11 @@
     #include <SFML/System.hpp>
     #include <SFML/Audio.hpp>
 
+using namespace std;
+
 class Font {
     public:
-        Font(std::string filepath);
+        Font(string filepath);
 
         sf::Font font;
     private:

@@ -6,11 +6,13 @@
     #include <SFML/Audio.hpp>
     #include <memory>
 
+using namespace std;
+
 class Music {
     public:
-        Music(const std::string &filepath);
+        Music(const string &filepath);
 
-        std::shared_ptr<sf::Music> music;
+        shared_ptr<sf::Music> music;
     private:
 };
 

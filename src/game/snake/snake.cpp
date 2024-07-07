@@ -22,8 +22,7 @@ void Snake::insertNode(sf::Vector2f pos, sf::Color snakeBodyColor)
 {
     Node *curr = head;
 
-    while (curr->next)
-        curr = curr->next;
+    while (curr->next) curr = curr->next;
     curr->next = new Node(curr, pos, snakeBodyColor);
     curr->next->moove = curr->moove;
 }

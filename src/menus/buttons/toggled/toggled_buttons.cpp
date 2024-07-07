@@ -2,7 +2,9 @@
 #include "all.hpp"
 #include <iostream>
 
-toggledButtons::toggledButtons(All &all, const std::string &txt, sf::Vector2f size, sf::Vector2f new_pos, toggledButtonFunc clickedFunction, toggledButtonFunc inputKeyFunction, sf::Color background) :
+using namespace std;
+
+toggledButtons::toggledButtons(All &all, const string &txt, sf::Vector2f size, sf::Vector2f new_pos, toggledButtonFunc clickedFunction, toggledButtonFunc inputKeyFunction, sf::Color background) :
     clickedFunction(clickedFunction),
     inputKeyFunction(inputKeyFunction),
     mouseHoverSound(&all.assets.sounds.at(SOUND_HOVER)),

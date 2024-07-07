@@ -1,10 +1,12 @@
 #include "font.hpp"
 #include <iostream>
 
-Font::Font(std::string filepath)
+using namespace std;
+
+Font::Font(string filepath)
 {
     if (not font.loadFromFile(filepath)) {
-        std::cerr << "Problem with " + filepath + "." << std::endl;
+        cerr << "Problem with " + filepath + "." << endl;
         exit(84);
     }
 }

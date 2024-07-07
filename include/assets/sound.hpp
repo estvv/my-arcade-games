@@ -6,12 +6,14 @@
     #include <SFML/Audio.hpp>
     #include <memory>
 
+using namespace std;
+
 class Sound {
     public:
-        Sound(std::string filepath);
+        Sound(string filepath);
 
         sf::Sound sound;
-        std::shared_ptr<sf::SoundBuffer> soundBuffer;
+        shared_ptr<sf::SoundBuffer> soundBuffer;
     private:
 };
 

@@ -1,11 +1,13 @@
-#include "manage_snake.hpp"
-#include "colors.hpp"
+#include "snake_game.hpp"
 #include "all.hpp"
 #include <iostream>
 
+using namespace std;
+
 SnakeGame::SnakeGame(SnakeColors snakeColors) :
+    arena(sf::Vector2f(600, 600), sf::Vector2f(100, 180)),
     snake(snakeColors.snakeHead),
-    apple(snakeColors.apple)
+    apple(arena, snakeColors.apple)
 {
 }
 
@@ -18,13 +20,13 @@ void SnakeGame::gameEvent(All &all)
             // Check user input
             if (all.event.key.code == sf::Keyboard::Escape)
                 all.screen_id = pauseMenu;
-            if (all.event.key.code == all.settings.up or all.event.key.code == sf::Keyboard::Up)
+            if (all.event.key.code == all.settings.upInput or all.event.key.code == sf::Keyboard::Up)
                 snake.head->moove = NORTH;
-            if (all.event.key.code == all.settings.down or all.event.key.code == sf::Keyboard::Down)
+            if (all.event.key.code == all.settings.downInput or all.event.key.code == sf::Keyboard::Down)
                 snake.head->moove = SOUTH;
-            if (all.event.key.code == all.settings.left or all.event.key.code == sf::Keyboard::Left)
+            if (all.event.key.code == all.settings.leftInput or all.event.key.code == sf::Keyboard::Left)
                 snake.head->moove = WEST;
-            if (all.event.key.code == all.settings.right or all.event.key.code == sf::Keyboard::Right)
+            if (all.event.key.code == all.settings.rightInput or all.event.key.code == sf::Keyboard::Right)
                 snake.head->moove = EAST;
         }
     }
@@ -72,7 +74,7 @@ void SnakeGame::endOfGame(All &all)
     sf::Vector2f head_pos(snake.head->rect.getPosition());
 
     // If the snake's head is out of the arena
-    if (head_pos.x < 0 or head_pos.x > 800 or head_pos.y < 40 or head_pos.y > 800)
+    if (head_pos.x < 100 or head_pos.x >= 700 or head_pos.y < 180 or head_pos.y >= 780)
         all.screen_id = deadMenu;
     while (node) {
         if (node->rect.getPosition() == head_pos)
@@ -91,22 +93,22 @@ void SnakeGame::appelEating(All &all)
     sf::Vector2f apple_pos(apple.apple.getPosition());
 
     if (snake_pos == apple_pos) {
-        srand(time(NULL));
-        apple.apple.setPosition(20 * (rand() % 40), 20 * (rand() % 38) + 40);
+        apple.putAppleToRandomPlace(arena);
         apple_pos = apple.apple.getPosition();
+        // Check if apple is not on a snake node
         while (node) {
+            // Reset apple position
             if (snake_pos == apple_pos) {
-                srand(time(NULL));
-                apple.apple.setPosition(20 * (rand() % 40), 20 * (rand() % 38) + 40);
+                apple.putAppleToRandomPlace(arena);
                 node = snake.head;
             } else {
                 node = node->next;
             }
         }
         all.game.score = all.game.score + 1 + all.game.round;
-        all.game.scoreText.setString("SCORE : " + std::to_string(all.game.score));
-        all.menus.menusList.at(pauseMenu).buttonsList.at(1).button_text.setString(std::to_string(all.game.score));
-        all.menus.menusList.at(deadMenu).buttonsList.at(1).button_text.setString(std::to_string(all.game.score));
+        all.game.hud.scoreText.setString("SCORE : " + to_string(all.game.score));
+        all.menus.menusList.at(pauseMenu).buttonsList.at(1).button_text.setString(to_string(all.game.score));
+        all.menus.menusList.at(deadMenu).buttonsList.at(1).button_text.setString(to_string(all.game.score));
         all.assets.sounds.at(SOUND_APPLE).sound.play();
         snake.addBody(all.colors.snakeColors.snakeBody);
     }
@@ -117,6 +119,7 @@ void SnakeGame::gameDisplay(sf::RenderWindow &window)
 {
     Node *node(snake.head);
 
+    arena.drawArena(window);
     window.draw(apple.apple);
     while (node) {
         window.draw(node->rect);
@@ -124,14 +127,15 @@ void SnakeGame::gameDisplay(sf::RenderWindow &window)
     }
 }
 
-void SnakeGame::updateSnakeColors(SnakeColors snakeColors)
+void SnakeGame::updateSnakeColors(Colors colors)
 {
     Node *node = snake.head->next;
 
-    apple.apple.setFillColor(snakeColors.apple);
-    snake.head->rect.setFillColor(snakeColors.snakeHead);
+    arena.arena.setOutlineColor(colors.menusColors.button);
+    apple.apple.setFillColor(colors.snakeColors.apple);
+    snake.head->rect.setFillColor(colors.snakeColors.snakeHead);
     while (node) {
-        node->rect.setFillColor(snakeColors.snakeBody);
+        node->rect.setFillColor(colors.snakeColors.snakeBody);
         node = node->next;
     }
 }
@@ -140,7 +144,6 @@ void SnakeGame::initSnake(void)
 {
     snake.head->rect.setPosition(sf::Vector2f(400, 400));
     snake.head->next = nullptr;
-    srand(time(NULL));
-    apple.apple.setPosition(20 * (rand() % 40), 20 * (rand() % 38) + 40);
+    apple.putAppleToRandomPlace(arena);
     snake.head->moove = SOUTH;
 }

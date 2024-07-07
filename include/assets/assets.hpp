@@ -6,6 +6,8 @@
     #include "sound.hpp"
     #include <vector>
 
+using namespace std;
+
 class All;
 
 class Assets {
@@ -13,10 +15,10 @@ class Assets {
         Assets(void);
         void displayImages(All &all);
 
-        std::vector<Sound> sounds;
-        std::vector<Image> images;
-        std::vector<Music> musics;
-        std::vector<Font> fonts;
+        vector<Sound> sounds;
+        vector<Image> images;
+        vector<Music> musics;
+        vector<Font> fonts;
     private:
 };
 

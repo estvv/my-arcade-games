@@ -8,10 +8,10 @@
 class Settings {
     public:
         Settings(void);
-        sf::Keyboard::Key up;
-        sf::Keyboard::Key down;
-        sf::Keyboard::Key left;
-        sf::Keyboard::Key right;
+        sf::Keyboard::Key upInput;
+        sf::Keyboard::Key downInput;
+        sf::Keyboard::Key leftInput;
+        sf::Keyboard::Key rightInput;
         unsigned int masterVolume;
         unsigned int musicVolume;
         unsigned int soundVolume;

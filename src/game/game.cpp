@@ -4,30 +4,21 @@
 #include <iostream>
 
 Game::Game(All *all, Colors colors, sf::RenderWindow &window) :
+    hud(all),
     snakeGame(colors.snakeColors),
     breakoutGame(),
+    bubbleShooterGame(colors.objectsColors),
     window(window),
-    arena(sf::Vector2f(796, 758)),
-    scoreText("SCORE : 0", all->assets.fonts.at(0).font, 30),
-    roundText("ROUND : 1", all->assets.fonts.at(0).font, 30),
     score(0),
     round(0),
     gameState(snake)
 {
-    arena.setOutlineThickness(2);
-    arena.setOutlineColor(sf::Color(0, 240, 0));
-    arena.setPosition(sf::Vector2f(2, 40));
-    arena.setFillColor(colors.menusColors.mainColor);
-    scoreText.setPosition(sf::Vector2f(0, 0));
-    roundText.setPosition(sf::Vector2f(600, 0));
 }
 
 void Game::updateGameColors(MenusColors menusColors)
 {
-    arena.setFillColor(menusColors.mainColor);
-    arena.setOutlineColor(menusColors.button);
-    roundText.setFillColor(menusColors.buttonText);
-    scoreText.setFillColor(menusColors.buttonText);
+    hud.roundText.setFillColor(menusColors.buttonText);
+    hud.scoreText.setFillColor(menusColors.buttonText);
 }
 
 void Game::gamesEvents(All &all)
@@ -38,6 +29,8 @@ void Game::gamesEvents(All &all)
         breakoutGame.gameEvent(all);
     if (gameState == bubbleShooter)
         bubbleShooterGame.gameEvent(all);
+    if (gameState == tetris)
+        tetrisGame.gameEvent(all);
 }
 
 // Game update
@@ -49,18 +42,20 @@ void Game::gamesUpdates(All &all)
         breakoutGame.gameUpdate(all);
     if (gameState == bubbleShooter)
         bubbleShooterGame.gameUpdate(all);
+    if (gameState == tetris)
+        tetrisGame.gameUpdate(all);
 }
 
 // Display game
-void Game::gamesDisplay()
+void Game::gamesDisplay(void)
 {
-    window.draw(arena);
-    window.draw(scoreText);
-    window.draw(roundText);
+    hud.textDisplay(window);
     if (gameState == snake)
         snakeGame.gameDisplay(window);
     if (gameState == breakout)
         breakoutGame.gameDisplay(window);
     if (gameState == bubbleShooter)
         bubbleShooterGame.gameDisplay(window);
+    if (gameState == tetris)
+        tetrisGame.gameDisplay(window);
 }

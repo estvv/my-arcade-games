@@ -1,11 +1,13 @@
 #include "sound.hpp"
 #include <iostream>
 
-Sound::Sound(std::string filepath) :
-    soundBuffer(std::make_shared<sf::SoundBuffer>())
+using namespace std;
+
+Sound::Sound(string filepath) :
+    soundBuffer(make_shared<sf::SoundBuffer>())
 {
     if (not soundBuffer->loadFromFile(filepath)) {
-        std::cerr << "Problem with " + filepath + "." << std::endl;
+        cerr << "Problem with " + filepath + "." << endl;
         exit(84);
     }
     sound.setBuffer(*soundBuffer);

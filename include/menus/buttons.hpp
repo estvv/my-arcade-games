@@ -8,6 +8,8 @@
     #include "colors.hpp"
     #include "sound.hpp"
 
+using namespace std;
+
 class Assets;
 class All;
 class toggledButtons;
@@ -20,9 +22,11 @@ void goToMainMenu(All &all);
 void goToChoosingSnakeGameMenu(All &all);
 void goToChoosingBreakoutGameMenu(All &all);
 void goToChoosingBubbleShooterGameMenu(All &all);
+void goToChoosingTetrisGameMenu(All &all);
 void goToSnakeGameScreen(All &all);
 void goToBreakoutGameScreen(All &all);
 void goToBubbleShooterGameScreen(All &all);
+void goToTetrisGameScreen(All &all);
 void goToFirstSettingsMenu(All &all);
 void goToSecondSettingsMenu(All &all);
 void goToLeaderboardMenu(All &all);
@@ -49,7 +53,7 @@ void leftInputKey(All &all, toggledButtons &button);
 
 class toggledButtons {
     public:
-        toggledButtons(All &all, const std::string &txt, sf::Vector2f size, sf::Vector2f new_pos, toggledButtonFunc clickedFunction, toggledButtonFunc inputKeyFunction, sf::Color background);
+        toggledButtons(All &all, const string &txt, sf::Vector2f size, sf::Vector2f new_pos, toggledButtonFunc clickedFunction, toggledButtonFunc inputKeyFunction, sf::Color background);
         void displayButtons(sf::RenderWindow &window);
         void isHover(MenusColors menusColors, sf::RenderWindow &window);
         void isClicked(MenusColors menusColors);
@@ -69,7 +73,7 @@ class toggledButtons {
 
 class actionButtons {
     public:
-        actionButtons(All &all, const std::string &txt, sf::Vector2f size, sf::Vector2f new_pos, actionButtonFunc func);
+        actionButtons(All &all, const string &txt, sf::Vector2f size, sf::Vector2f new_pos, actionButtonFunc func);
         void displayButtons(sf::RenderWindow &window);
         void isHover(MenusColors menusColors, sf::RenderWindow &window);
         void isClicked(MenusColors menusColors);
@@ -86,7 +90,7 @@ class actionButtons {
 
 class Buttons {
     public:
-        Buttons(All &all, const std::string &txt, sf::Vector2f size, sf::Vector2f new_pos);
+        Buttons(All &all, const string &txt, sf::Vector2f size, sf::Vector2f new_pos);
         void isHover(MenusColors menusColors, sf::RenderWindow &window);
         void displayButtons(sf::RenderWindow &window);
 

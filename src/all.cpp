@@ -18,13 +18,14 @@ void All::updateThemeColors(void)
 {
     menus.updateMenusColors(colors.menusColors);
     game.updateGameColors(colors.menusColors);
-    game.snakeGame.updateSnakeColors(colors.snakeColors);
+    game.snakeGame.updateSnakeColors(colors);
+    game.tetrisGame.updateTetrisColors(colors);
 }
 
 void All::manageScreens(void)
 {
     window.clear(colors.menusColors.mainColor);
-    if (screen_id == snakePlayScreen or screen_id == breakoutPlayScreen or screen_id == bubbleShooterPlayScreen) {
+    if (screen_id == snakePlayScreen or screen_id == breakoutPlayScreen or screen_id == bubbleShooterPlayScreen or screen_id == tetrisPlayScreen) {
         game.gamesEvents(*this);
         game.gamesUpdates(*this);
         game.gamesDisplay();

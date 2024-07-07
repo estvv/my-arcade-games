@@ -1,14 +1,12 @@
 #ifndef EXAMPLE_HPP
     #define EXAMPLE_HPP
-    #include <SFML/Graphics.hpp>
-    #include <SFML/Window.hpp>
-    #include <SFML/System.hpp>
-    #include <SFML/Audio.hpp>
-    #include <iostream>
     #include "enum.hpp"
-    #include "manage_breakout.hpp"
-    #include "manage_snake.hpp"
-    #include "manage_bubble_shooter.hpp"
+    #include "arena.hpp"
+    #include "hud.hpp"
+    #include "breakout_game.hpp"
+    #include "snake_game.hpp"
+    #include "bubble_shooter_game.hpp"
+    #include "tetris_game.hpp"
 
 class Game {
     public:
@@ -18,14 +16,13 @@ class Game {
         void gamesEvents(All &all);
         void updateGameColors(MenusColors menusColors);
 
+        Hud hud;
         SnakeGame snakeGame;
         BreakoutGame breakoutGame;
-        BubbleShooterGame bubbleShooterGame; 
+        BubbleShooterGame bubbleShooterGame;
+        TetrisGame tetrisGame;
         sf::RenderWindow &window;
         sf::Clock clock;
-        sf::RectangleShape arena;
-        sf::Text scoreText;
-        sf::Text roundText;
         unsigned int score;
         unsigned int round;
         enum game gameState;

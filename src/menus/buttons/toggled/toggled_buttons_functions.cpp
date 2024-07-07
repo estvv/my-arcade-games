@@ -67,7 +67,7 @@ void upInputKey(All &all, toggledButtons &button)
 {
     if (all.event.key.code >= 0 and all.event.key.code <= 25) {
         button.button_text.setString(alpha[all.event.key.code]);
-        all.settings.up = all.event.key.code;
+        all.settings.upInput = all.event.key.code;
     }
 }
 
@@ -75,7 +75,7 @@ void downInputKey(All &all, toggledButtons &button)
 {
     if (all.event.key.code >= 0 and all.event.key.code <= 25) {
         button.button_text.setString(alpha[all.event.key.code]);
-        all.settings.down = all.event.key.code;
+        all.settings.downInput = all.event.key.code;
     }
 }
 
@@ -83,7 +83,7 @@ void rightInputKey(All &all, toggledButtons &button)
 {
     if (all.event.key.code >= 0 and all.event.key.code <= 25) {
         button.button_text.setString(alpha[all.event.key.code]);
-        all.settings.right = all.event.key.code;
+        all.settings.rightInput = all.event.key.code;
     }
 }
 
@@ -91,7 +91,7 @@ void leftInputKey(All &all, toggledButtons &button)
 {
     if (all.event.key.code >= 0 and all.event.key.code <= 25) {
         button.button_text.setString(alpha[all.event.key.code]);
-        all.settings.left = all.event.key.code;
+        all.settings.leftInput = all.event.key.code;
     }
 }
 

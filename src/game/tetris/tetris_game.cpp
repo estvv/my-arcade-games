@@ -1,13 +1,14 @@
-#include "manage_bubble_shooter.hpp"
+#include "tetris_game.hpp"
 #include "colors.hpp"
 #include "all.hpp"
 #include <iostream>
 
-BubbleShooterGame::BubbleShooterGame(void)
+TetrisGame::TetrisGame(void) :
+    arena(sf::Vector2f(200, 500), sf::Vector2f(300, 240))
 {
 }
 
-void BubbleShooterGame::gameEvent(All &all)
+void TetrisGame::gameEvent(All &all)
 {
     while (all.window.pollEvent(all.event)) {
         if (all.event.type == sf::Event::Closed)
@@ -21,23 +22,24 @@ void BubbleShooterGame::gameEvent(All &all)
 }
 
 // Game update
-void BubbleShooterGame::gameUpdate(UN All &all)
+void TetrisGame::gameUpdate(UN All &all)
 {
     return;
 }
 
 // Display game
-void BubbleShooterGame::gameDisplay(UN sf::RenderWindow &window)
+void TetrisGame::gameDisplay(sf::RenderWindow &window)
 {
+    arena.drawArena(window);
+}
+
+void TetrisGame::updateTetrisColors(Colors colors)
+{
+    arena.arena.setOutlineColor(colors.menusColors.button);
     return;
 }
 
-void BubbleShooterGame::updateBubbleShooterColors(UN Colors colors)
-{
-    return;
-}
-
-void BubbleShooterGame::initBubbleShooter(void)
+void TetrisGame::initTetris(void)
 {
     return;
 }

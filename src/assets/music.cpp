@@ -2,11 +2,13 @@
 #include "all.hpp"
 #include <iostream>
 
-Music::Music(const std::string &filepath) :
-    music(std::make_shared<sf::Music>())
+using namespace std;
+
+Music::Music(const string &filepath) :
+    music(make_shared<sf::Music>())
 {
     if (not music->openFromFile(filepath)) {
-        std::cerr << "Problem with " + filepath + "." << std::endl;
+        cerr << "Problem with " + filepath + "." << endl;
         exit(84);
     }
 }

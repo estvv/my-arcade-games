@@ -5,18 +5,24 @@
     #include <SFML/System.hpp>
     #include <SFML/Audio.hpp>
     #include "colors.hpp"
+    #include "ball.hpp"
+
+using namespace std;
 
 class All;
 
 class BubbleShooterGame {
     public:
-        BubbleShooterGame(void);
+        BubbleShooterGame(ObjectsColors colors);
         void gameEvent(All &all);
         void gameUpdate(All &all);
         void gameDisplay(sf::RenderWindow &window);
-        void updateBubbleShooterColors(Colors colors);
+        void updateBubbleShooterColors(ObjectsColors colors);
         void initBubbleShooter(void);
+        void initTargetBalls(ObjectsColors colors);
 
+        Ball shootingBall;
+        vector<vector<Ball>> targetsBalls;
     private:
 };
 

@@ -5,6 +5,9 @@
     #include <SFML/System.hpp>
     #include <SFML/Audio.hpp>
     #include "colors.hpp"
+    #include "brick.hpp"
+
+using namespace std;
 
 class All;
 
@@ -17,6 +20,7 @@ class BreakoutGame {
         void updateBreakoutColors(Colors colors);
         void initBreakout(void);
 
+        vector<vector<Brick>> targetBricks;
     private:
 };
 

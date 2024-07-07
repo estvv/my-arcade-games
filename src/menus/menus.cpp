@@ -134,13 +134,16 @@ void Menus::initHelp(All &all)
 void Menus::initChoosingGame(All &all)
 {
     menusList.at(choosingSnakeGameMenu).actionButtonsList.push_back(actionButtons(all, "PLAY", sf::Vector2f(250, 50), sf::Vector2f(275, 375), goToSnakeGameScreen));
-    menusList.at(choosingSnakeGameMenu).actionButtonsList.push_back(actionButtons(all, "NEXT", sf::Vector2f(100, 50), sf::Vector2f(690, 740), goToChoosingBreakoutGameMenu));
     menusList.at(choosingSnakeGameMenu).actionButtonsList.push_back(actionButtons(all, "BACK", sf::Vector2f(100, 50), sf::Vector2f(10, 740), goToMainMenu));
+    menusList.at(choosingSnakeGameMenu).actionButtonsList.push_back(actionButtons(all, "NEXT", sf::Vector2f(100, 50), sf::Vector2f(690, 740), goToChoosingBreakoutGameMenu));
     menusList.at(choosingBreakoutGameMenu).actionButtonsList.push_back(actionButtons(all, "PLAY", sf::Vector2f(250, 50), sf::Vector2f(275, 375), goToBreakoutGameScreen));
     menusList.at(choosingBreakoutGameMenu).actionButtonsList.push_back(actionButtons(all, "BACK", sf::Vector2f(100, 50), sf::Vector2f(10, 740), goToChoosingSnakeGameMenu));
     menusList.at(choosingBreakoutGameMenu).actionButtonsList.push_back(actionButtons(all, "NEXT", sf::Vector2f(100, 50), sf::Vector2f(690, 740), goToChoosingBubbleShooterGameMenu));
     menusList.at(choosingBubbleShooterGameMenu).actionButtonsList.push_back(actionButtons(all, "PLAY", sf::Vector2f(250, 50), sf::Vector2f(275, 375), goToBubbleShooterGameScreen));
     menusList.at(choosingBubbleShooterGameMenu).actionButtonsList.push_back(actionButtons(all, "BACK", sf::Vector2f(100, 50), sf::Vector2f(10, 740), goToChoosingBreakoutGameMenu));
+    menusList.at(choosingBubbleShooterGameMenu).actionButtonsList.push_back(actionButtons(all, "NEXT", sf::Vector2f(100, 50), sf::Vector2f(690, 740), goToChoosingTetrisGameMenu));
+    menusList.at(choosingTetrisGameMenu).actionButtonsList.push_back(actionButtons(all, "PLAY", sf::Vector2f(250, 50), sf::Vector2f(275, 375), goToTetrisGameScreen));
+    menusList.at(choosingTetrisGameMenu).actionButtonsList.push_back(actionButtons(all, "BACK", sf::Vector2f(100, 50), sf::Vector2f(10, 740), goToChoosingBubbleShooterGameMenu));
 }
 
 void Menus::updateMenusColors(MenusColors menusColors)

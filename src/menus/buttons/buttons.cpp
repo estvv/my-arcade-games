@@ -1,7 +1,9 @@
 #include "buttons.hpp"
 #include "all.hpp"
 
-Buttons::Buttons(All &all, const std::string &txt, sf::Vector2f size, sf::Vector2f new_pos) :
+using namespace std;
+
+Buttons::Buttons(All &all, const string &txt, sf::Vector2f size, sf::Vector2f new_pos) :
     mouseHoverSound(&all.assets.sounds.at(SOUND_HOVER)),
     state(isNone)
 {

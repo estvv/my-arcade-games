@@ -10,6 +10,8 @@
     #include "colors.hpp"
     #include "assets.hpp"
 
+using namespace std;
+
 class Menu {
     public:
         Menu(sf::RenderWindow &window);
@@ -20,9 +22,9 @@ class Menu {
         void inputClickPressed(All &all);
         void inputClickReleased(All &all);
 
-        std::vector<toggledButtons> toggledButtonsList;
-        std::vector<actionButtons> actionButtonsList;
-        std::vector<Buttons> buttonsList;
+        vector<toggledButtons> toggledButtonsList;
+        vector<actionButtons> actionButtonsList;
+        vector<Buttons> buttonsList;
         sf::RenderWindow &window;
     private:
 };
@@ -39,7 +41,7 @@ class Menus {
         void initChoosingGame(All &all);
         void updateMenusColors(MenusColors menusColors);
 
-        std::vector<Menu> menusList;
+        vector<Menu> menusList;
     private:
 };
 

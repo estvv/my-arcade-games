@@ -1,5 +1,5 @@
-#ifndef MANAGE_SNAKE_HPP_
-    #define MANAGE_SNAKE_HPP_
+#ifndef SNAKE_GAME_HPP_
+    #define SNAKE_GAME_HPP_
     #include <SFML/Graphics.hpp>
     #include <SFML/Window.hpp>
     #include <SFML/System.hpp>
@@ -30,4 +30,4 @@ class SnakeGame {
     private:
 };
 
-#endif /* !MANAGE_SNAKE_HPP_ */
+#endif /* !SNAKE_GAME_HPP_ */

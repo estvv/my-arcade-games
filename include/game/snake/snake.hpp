@@ -1,10 +1,11 @@
 #ifndef SNAKE_HPP_
     #define SNAKE_HPP_
-    #include <iostream>
     #include <SFML/Graphics.hpp>
     #include <SFML/Window.hpp>
     #include <SFML/System.hpp>
     #include <SFML/Audio.hpp>
+    #include <iostream>
+    #include "cell.hpp"
 
 enum dir {
     NORTH,
@@ -17,8 +18,8 @@ class Node {
     public:
         Node(Node *prev, sf::Vector2f pos, sf::Color color);
 
-        sf::RectangleShape rect;
-        enum dir moove;
+        enum dir moove = SOUTH;
+        Cell snakeCell;
         Node *next;
         Node *prev;
     private:
@@ -30,6 +31,7 @@ class Snake {
         void insertNode(sf::Vector2f pos, sf::Color snakeBodyColor);
         void addBody(sf::Color snakeBodyColor);
         void updateBody(void);
+        void mooveSnake(const int x, const int y);
 
         Node *head;
     private:

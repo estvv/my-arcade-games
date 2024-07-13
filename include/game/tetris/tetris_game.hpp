@@ -1,12 +1,18 @@
 #ifndef TETRIS_GAME_HPP_
     #define TETRIS_GAME_HPP_
+    #include <vector>
     #include "colors.hpp"
     #include "block.hpp"
+    #include "blocks.hpp"
     #include "arena.hpp"
 
 class All;
 
 class TetrisGame {
+    enum pauseState {
+        ON,
+        OFF
+    };
     public:
         TetrisGame(void);
         void gameEvent(All &all);
@@ -15,7 +21,9 @@ class TetrisGame {
         void updateTetrisColors(Colors colors);
         void initTetris(void);
 
+        pauseState onPause = OFF;
         Arena arena;
+        Blocks blocks;
     private:
 };
 

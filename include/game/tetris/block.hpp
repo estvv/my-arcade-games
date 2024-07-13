@@ -1,9 +1,6 @@
 #ifndef BLOCK_HPP_
     #define BLOCK_HPP_
-    #include <SFML/Graphics.hpp>
-    #include <SFML/Window.hpp>
-    #include <SFML/System.hpp>
-    #include <SFML/Audio.hpp>
+    #include "cell.hpp"
 
 using namespace std;
 
@@ -18,20 +15,23 @@ enum blockType {
     T_block
 };
 
-class Cell {
-    public:
-        Cell(void);
-
-        sf::RectangleShape cell;
-    private:
-};
+class Arena;
 
 class Block {
     public:
         Block(void);
+        void createO_Block(void);
+        void createI_Block(void);
+        void createZ_Block(void);
+        void createS_Block(void);
+        void createL_Block(void);
+        void createJ_Block(void);
+        void createT_Block(void);
+        void create_Block(vector<vector<blockType>> blockArray);
 
-        enum blockType type;
-        vector<Cell> block;
+        enum blockType type = NONE_block;
+        bool is_stuck = false;
+        sf::Vector2i blockPos[4];
     private:
 };
 

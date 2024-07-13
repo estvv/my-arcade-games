@@ -18,6 +18,7 @@ Menus::Menus(All *all, sf::RenderWindow &window)
 void Menus::initMain(All &all)
 {
     menusList.at(mainMenu).actionButtonsList.push_back(actionButtons(all, "PLAY", sf::Vector2f(400, 50), sf::Vector2f(200, 300), goToChoosingSnakeGameMenu));
+    menusList.at(mainMenu).actionButtonsList.push_back(actionButtons(all, "TETRIS", sf::Vector2f(100, 50), sf::Vector2f(600, 200), goToTetrisGameScreen));
     menusList.at(mainMenu).actionButtonsList.push_back(actionButtons(all, "SETTINGS", sf::Vector2f(400, 50), sf::Vector2f(200, 400), goToFirstSettingsMenu));
     menusList.at(mainMenu).actionButtonsList.push_back(actionButtons(all, "LEADERBOARD", sf::Vector2f(400, 50), sf::Vector2f(200, 500), goToLeaderboardMenu));
     menusList.at(mainMenu).actionButtonsList.push_back(actionButtons(all, "HELP", sf::Vector2f(400, 50), sf::Vector2f(200, 600), goToHelpMenu));

@@ -23,8 +23,8 @@ class Game {
         TetrisGame tetrisGame;
         sf::RenderWindow &window;
         sf::Clock clock;
-        unsigned int score;
-        unsigned int round;
+        unsigned int score = 0;
+        unsigned int round = 1;
         enum game gameState;
     private:
 };

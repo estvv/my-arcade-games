@@ -66,6 +66,8 @@ void goToTetrisGameScreen(All &all)
         all.game.hud.roundText.setString("ROUND : 0");
         all.menus.menusList.at(pauseMenu).actionButtonsList.at(0).func = [](All &all) {goToTetrisGameScreen(all);};
         all.menus.menusList.at(deadMenu).actionButtonsList.at(0).func = [](All &all) {goToTetrisGameScreen(all);};
+        all.game.tetrisGame.blocks.initBlocksArray();
+        all.game.tetrisGame.blocks.block.create_Block(all.game.tetrisGame.blocks.blocksArray);
     }
     all.menus.menusList.at(pauseMenu).buttonsList.at(1).button_text.setString(to_string(all.game.score));
     all.screen_id = tetrisPlayScreen;

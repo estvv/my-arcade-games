@@ -5,13 +5,14 @@
     #include <SFML/System.hpp>
     #include <SFML/Audio.hpp>
     #include "arena.hpp"
+    #include "cell.hpp"
 
 class Apple {
     public:
         Apple(Arena arena, sf::Color appleColor);
         void putAppleToRandomPlace(Arena arena);
 
-        sf::RectangleShape apple;
+        Cell appleCell;
     private:
 };
 

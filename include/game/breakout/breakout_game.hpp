@@ -1,11 +1,7 @@
 #ifndef MANAGE_BREAKOUT_HPP_
     #define MANAGE_BREAKOUT_HPP_
-    #include <SFML/Graphics.hpp>
-    #include <SFML/Window.hpp>
-    #include <SFML/System.hpp>
-    #include <SFML/Audio.hpp>
     #include "colors.hpp"
-    #include "brick.hpp"
+    #include "cell.hpp"
 
 using namespace std;
 
@@ -20,7 +16,7 @@ class BreakoutGame {
         void updateBreakoutColors(Colors colors);
         void initBreakout(void);
 
-        vector<vector<Brick>> targetBricks;
+        vector<vector<Cell>> targetBricks;
     private:
 };
 

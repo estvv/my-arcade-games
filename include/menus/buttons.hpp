@@ -1,9 +1,5 @@
 #ifndef BUTTONS_HPP_
     #define BUTTONS_HPP_
-    #include <SFML/Graphics.hpp>
-    #include <SFML/Window.hpp>
-    #include <SFML/System.hpp>
-    #include <SFML/Audio.hpp>
     #include "enum.hpp"
     #include "colors.hpp"
     #include "sound.hpp"

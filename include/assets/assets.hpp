@@ -1,10 +1,10 @@
 #ifndef ASSETS_HPP_
     #define ASSETS_HPP_
+    #include <vector>
     #include "font.hpp"
     #include "image.hpp"
     #include "music.hpp"
     #include "sound.hpp"
-    #include <vector>
 
 using namespace std;
 

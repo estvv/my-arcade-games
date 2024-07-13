@@ -9,8 +9,6 @@ Game::Game(All *all, Colors colors, sf::RenderWindow &window) :
     breakoutGame(),
     bubbleShooterGame(colors.objectsColors),
     window(window),
-    score(0),
-    round(0),
     gameState(snake)
 {
 }

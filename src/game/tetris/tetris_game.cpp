@@ -45,6 +45,7 @@ void TetrisGame::gameUpdate(All &all)
     }
     if (all.game.clock.getElapsedTime().asSeconds() > 1 and onPause == OFF) {
         blocks.updatePosition(0, 1);
+        blocks.checkCompleteLine();
         all.game.clock.restart();
     }
 }

@@ -83,6 +83,36 @@ void Blocks::updateBlockRotation(void)
     }
 }
 
+void Blocks::destroyBlocksLine(int y)
+{
+    for (int x = 0; x < int(blocksArray.at(y).size()); x++)
+        blocksArray.at(y).at(x) = NONE_block;
+    for (int first = y; first > 0; first--) {
+        for (int x = 0; x < int(blocksArray.at(first).size()); x++) {
+            for (sf::Vector2i &pos : block.blockPos) {
+                if (pos == sf::Vector2i(x, y)) continue;
+            }
+            blocksArray.at(first).at(x) = blocksArray.at(first - 1).at(x);
+            blocksArray.at(first - 1).at(x) = NONE_block;
+        }
+    }
+}
+
+void Blocks::checkCompleteLine(void)
+{
+    int count = 0;
+
+    for (int y = 0; y < int(blocksArray.size()); y++) {
+        count = 0;
+        for (int x = 0; x < int(blocksArray.at(y).size()); x++) {
+            if (blocksArray.at(y).at(x) != NONE_block) count++;
+        }
+        printf("COUNT : %d\n", count);
+        if (count == int(blocksArray.at(y).size()))
+            destroyBlocksLine(y);
+    }
+}
+
 void Blocks::displayBlocksArray(sf::RenderWindow &window)
 {
     sf::Vector2f pos(300, 260);

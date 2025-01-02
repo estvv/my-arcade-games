@@ -10,6 +10,8 @@ class Blocks {
         bool blockCanMoove(const int x, const int y);
         void updateBlockRotation(void);
         bool updatePosition(const int x, const int y);
+        void checkCompleteLine(void);
+        void destroyBlocksLine(int y);
 
         Block block;
         vector<vector<blockType>> blocksArray;

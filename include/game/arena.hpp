@@ -2,6 +2,7 @@
     #define ARENA_HPP_
     #include "colors.hpp"
     #include "cell.hpp"
+
 class Arena {
     public:
         Arena(sf::Vector2f size, sf::Vector2f pos);
